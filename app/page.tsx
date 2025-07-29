@@ -132,7 +132,7 @@ export default function PersonalWebsite() {
       <header className="flex items-center justify-between p-6 border-b border-gray-800">
         <div className="flex items-center space-x-4">
           <Avatar className="w-12 h-12">
-            <AvatarImage src="/placeholder.svg?height=48&width=48" alt="Profile" />
+            <AvatarImage src="/IMG_2486.jpg?height=48&width=48" alt="Profile" />
             <AvatarFallback>RC</AvatarFallback>
           </Avatar>
         </div>
@@ -217,7 +217,7 @@ export default function PersonalWebsite() {
   src="https://is1-ssl.mzstatic.com/image/thumb/Purple115/v4/35/fe/3a/35fe3a98-71fa-7e9a-9d34-584b90cac389/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/460x0w.webp"
 /><a href="https://apps.apple.com/ca/app/bo-nk/id1570376501" className="underline" target="_blank" rel="noopener noreferrer">
                   Bo!nk
-                </a>, a Windows Vista-inspired inkball game published on the App Store.
+                </a>, a Windows Vista-inspired inkball game published on the App Store
               </span>
             </li>
           </ul>
@@ -295,6 +295,11 @@ export default function PersonalWebsite() {
             </CardContent>
           </Card>
         </section>
+        <span>
+                I'd love to hear from you! Want to hire me? or simply wanna chat? Feel free to reach out by 
+                <a href="mailto:richardli0@outlook.com" class="text-stone-400 underline hover:text-stone-100 font-minecraft inline-block transform transition-transform duration-200 hover:scale-110">email</a>
+                , or connect with me on <a href="https://www.linkedin.com/in/richardli0" class="text-stone-400 underline hover:text-stone-100 font-minecraft inline-block transform transition-transform duration-200 hover:scale-110">LinkedIn</a>.
+        </span>
       </main>
     </div>
   )
