@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Send, ExternalLink } from "lucide-react"
+import Head from "next/head"
+
 
 interface Message {
   id: string
@@ -126,8 +128,15 @@ export default function PersonalWebsite() {
     "How did you score so well on the SAT?",
   ]
 
+
+
   return (
+  
     <div className="min-h-screen bg-black text-green-400 font-mono">
+    <Head>
+  <title>Richard Li</title>
+  <meta name="description" content="Personal website of Richard Li." />
+</Head>
       {/* Header */}
       <header className="flex items-center justify-between p-6 border-b border-gray-800">
         <div className="flex items-center space-x-4">
@@ -158,7 +167,7 @@ export default function PersonalWebsite() {
               I'm 18, based in <span className="underline"><a href="https://en.wikipedia.org/wiki/Toronto" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110">toronto</a></span>.
             </p>
             <p>
-              I love public transportation, software engineering, and UX/UI design
+              I love public transportation, software engineering, and UX/UI design.
             </p>
           </div>
         </section>
@@ -177,6 +186,7 @@ export default function PersonalWebsite() {
   alt="University of Waterloo"
   className="inline w-4 h-4 mr-1"
   src="https://i.pinimg.com/originals/90/19/17/901917f9b6e74d254525c3e37d3dd934.png"
+  
 />
                 <a href="https://uwaterloo.ca/" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110">university of waterloo</a></span>
             </li>
