@@ -141,7 +141,7 @@ export default function PersonalWebsite() {
           </Avatar>
         </div>
         <nav className="flex space-x-8">
-          <a href="#contact" className="hover:text-green-300 transition-colors">
+          <a href="mailto:richardli0@outlook.com" className="hover:text-green-300 transition-colors">
             CONTACT
           </a>
           <a href="https://www.linkedin.com/in/richardli0/" className="hover:text-green-300 transition-colors flex items-center gap-1">
