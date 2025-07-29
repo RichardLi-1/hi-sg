@@ -40,13 +40,10 @@ export default function PersonalWebsite() {
       <main className="max-w-4xl mx-auto p-6 space-y-8">
         {/* Introduction */}
         <section className="space-y-4">
-          <h1 className="text-4xl font-bold">Hey, I'm Nic!</h1>
+          <h1 className="text-4xl font-bold">Hey, I'm Richard!</h1>
           <div className="space-y-2 text-gray-300">
             <p>
-              I'm 19, based in <span className="underline">toronto</span> and <span className="underline">nyc</span>.
-            </p>
-            <p>
-              I've been building things for <span className="underline">3673 days</span>.
+              I'm 18, based in <span className="underline">toronto</span>.
             </p>
           </div>
         </section>
@@ -59,17 +56,7 @@ export default function PersonalWebsite() {
           <ul className="space-y-2 text-gray-300 ml-4">
             <li className="flex items-start">
               <span className="mr-2">•</span>
-              <span>
-                studying <span className="underline">systems design engineering</span> at the 🍁{" "}
-                <span className="underline">university of waterloo</span>
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">•</span>
-              <span>
-                joining ⚡ <span className="underline">lexical</span> as a software engineer intern in{" "}
-                <span className="underline">nyc</span> building ai agents for data
-              </span>
+              <span>interning at a YC-backed SaaS startup, analyzing ai trends and working on product design</span>
             </li>
           </ul>
         </section>
@@ -79,60 +66,29 @@ export default function PersonalWebsite() {
           <h2 className="text-xl">Previously I...</h2>
           <ul className="space-y-2 text-gray-300 ml-4">
             <li className="flex items-start">
-              <span className="mr-2">•</span>
-              <span>
-                was a software engineer intern at 🚀 <span className="underline">ounce</span>, building tools for
-                entrepreneurs worldwide
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">•</span>
-              <span>
-                was a software engineer intern at 🏦 <span className="underline">rbc</span>, working on machine learning
-                models
-              </span>
-            </li>
+            <span className="mr-2">•</span>
+            <span>
+              helped organize <a href="https://yrhacks.ca/" className="underline" target="_blank" rel="noopener noreferrer">YRHacks</a>, Canada's largest high school hackathon
+            </span>
+          </li>
           </ul>
         </section>
 
         {/* Projects */}
         <section className="space-y-4">
-          <h2 className="text-xl">A few projects I'm working on...</h2>
-          <ul className="space-y-2 text-gray-300 ml-4">
-            <li className="flex items-start">
-              <span className="mr-2">•</span>
-              <span>
-                <span className="underline">diff digest</span> - website that turns git diffs into release notes with
-                100+ users
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">•</span>
-              <span>
-                <span className="underline">sql query parser</span> - parser that can query flat JSON objects
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">•</span>
-              <span>
-                <span className="underline">dependsbot</span> - app with 200+ users that's easier to use than github's
-                dependabot
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">•</span>
-              <span>
-                <span className="underline">fernando</span> - posture checker robot that won 2nd place at utra hacks
-              </span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2">•</span>
-              <span>
-                <span className="underline">basketbin</span> - machine that sorts trash automatically using computer
-                vision
-              </span>
-            </li>
-          </ul>
+          <h2 className="text-xl">Currently working on...</h2>
+          <div className="text-gray-300 ml-4">
+            <span className="mr-2">•</span>
+            <a
+              href="https://www.futureforward.info/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-green-300 transition-colors"
+            >
+              future forward
+            </a>
+            {" - non-profit focusing on helping students discover their vocations"}
+          </div>
         </section>
 
         {/* Chatbot Section */}
@@ -145,7 +101,7 @@ export default function PersonalWebsite() {
               <div className="space-y-4 mb-4 max-h-96 overflow-y-auto">
                 {messages.length === 0 && (
                   <div className="text-gray-500 text-sm">
-                    Ask me anything about Nic! Try questions like "What are your interests?" or "Tell me about your
+                    Ask me anything about Richard! Try questions like "What are your interests?" or "Tell me about your
                     projects"
                   </div>
                 )}
@@ -163,7 +119,7 @@ export default function PersonalWebsite() {
                 <Input
                   value={input}
                   onChange={handleInputChange}
-                  placeholder="Ask me anything about Nic..."
+                  placeholder="Ask me anything about Richard..."
                   className="flex-1 bg-gray-800 border-gray-600 text-green-400 placeholder-gray-500"
                   disabled={isLoading}
                 />
