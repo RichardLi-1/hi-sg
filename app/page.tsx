@@ -204,7 +204,7 @@ export default function PersonalWebsite() {
   className="inline w-4 h-4 mr-1"
   src="https://www.yrhacks.ca/_next/static/media/logo.3aecaa9f.svg"
 />
-                <a href="https://yrhacks.ca/" className="underline" class="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110" target="_blank" rel="noopener noreferrer">
+                <a href="https://yrhacks.ca/" className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110" target="_blank" rel="noopener noreferrer">
                   YRHacks
                 </a>
                 , Canada's largest high school hackathon
@@ -223,7 +223,7 @@ export default function PersonalWebsite() {
   alt="Bo!nk Logo"
   className="inline w-4 h-4 mr-1"
   src="https://is1-ssl.mzstatic.com/image/thumb/Purple115/v4/35/fe/3a/35fe3a98-71fa-7e9a-9d34-584b90cac389/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/460x0w.webp"
-/><a href="https://apps.apple.com/ca/app/bo-nk/id1570376501" className="underline" class="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110" target="_blank" rel="noopener noreferrer">
+/><a href="https://apps.apple.com/ca/app/bo-nk/id1570376501" className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110" target="_blank" rel="noopener noreferrer">
                   Bo!nk
                 </a>, a Windows Vista-inspired inkball game published on the App Store
               </span>
