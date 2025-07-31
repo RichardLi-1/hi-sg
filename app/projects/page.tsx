@@ -30,12 +30,12 @@ const projects = [
     tags: ["Non-profit", "Web Development", "Community"],
   },
   {
-    id: "tutoring-platform",
-    title: "Tutoring Platform",
-    year: "2023",
-    description: "Custom learning management system for personalized education",
+    id: "yrhacks",
+    title: "YRHacks",
+    year: "2024-2025",
+    description: "Helped organize Canada's largest high school hackathon",
     image: "/placeholder.svg?height=400&width=600",
-    tags: ["Education", "React", "Node.js"],
+    tags: ["Community", "Logistics", "Organizations"],
   },
 ]
 
