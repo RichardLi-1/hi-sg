@@ -28,7 +28,7 @@ export function AnimatedHeader({ backHref, backText, rightLinks = [] }: Animated
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
         isScrolled ? "transform scale-95 translate-y-2" : "transform scale-100 translate-y-0"
       }`}
     >
