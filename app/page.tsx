@@ -2,15 +2,14 @@
 import { useState } from "react"
 import type React from "react"
 import Link from "next/link"
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
-import { Send, ExternalLink } from "lucide-react"
+import { Send } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { AnimatedPage } from "@/components/animated-page"
 import { StaggeredContent } from "@/components/staggered-content"
+import { AnimatedHeader } from "@/components/animated-header"
 
 interface Message {
   id: string
@@ -135,37 +134,10 @@ export default function PersonalWebsite() {
       <div className="min-h-screen bg-black text-green-400 font-mono">
         {/* Header */}
         <StaggeredContent delay={0}>
-          <header className="flex items-center justify-between p-6 border-b border-gray-800">
-            <div className="flex items-center space-x-4">
-              <Avatar className="w-12 h-12">
-                <AvatarImage src="/IMG_2486.jpg?height=48&width=48" alt="Profile" />
-                <AvatarFallback>RL</AvatarFallback>
-              </Avatar>
-            </div>
-            <nav className="flex space-x-8">
-              <Link href="/projects" className="hover:text-green-300 transition-colors">
-                PROJECTS
-              </Link>
-              <a href="mailto:richardli0@outlook.com" className="hover:text-green-300 transition-colors">
-                CONTACT
-              </a>
-              <a
-                href="https://www.linkedin.com/in/richardli0/"
-                className="hover:text-green-300 transition-colors flex items-center gap-1"
-              >
-                LINKEDIN <ExternalLink className="w-3 h-3" />
-              </a>
-              <a
-                href="https://github.com/RichardLi-1"
-                className="hover:text-green-300 transition-colors flex items-center gap-1"
-              >
-                GITHUB <ExternalLink className="w-3 h-3" />
-              </a>
-            </nav>
-          </header>
+          <AnimatedHeader isHomepage={true} />
         </StaggeredContent>
 
-        <main className="max-w-4xl mx-auto p-6 space-y-8">
+        <main className="max-w-4xl mx-auto p-6 space-y-8 pt-32">
           {/* Introduction */}
           <StaggeredContent delay={200}>
             <section className="space-y-4">

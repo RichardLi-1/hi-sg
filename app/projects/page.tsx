@@ -24,7 +24,7 @@ const projects = [
     tags: ["Non-profit", "Web Development", "Community"],
   },
   {
-    id: "future-forward",
+    id: "futureforward",
     title: "Future Forward",
     year: "2024",
     description: "Non-profit focusing on helping students discover their vocations",
@@ -55,7 +55,7 @@ export default function ProjectsPage() {
           ]}
         />
 
-        <main className="max-w-6xl mx-auto p-6 pt-32">
+        <main className="max-w-6xl mx-auto p-6 pt-24">
           <StaggeredContent delay={200}>
             <div className="mb-12">
               <h1 className="text-4xl font-bold mb-4">Projects</h1>

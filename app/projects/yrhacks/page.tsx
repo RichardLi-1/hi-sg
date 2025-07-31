@@ -14,7 +14,7 @@ export default function BoinkProjectPage() {
           rightLinks={[{ href: "https://www.yrhacks.ca", text: "Website", external: true }]}
         />
 
-        <main className="max-w-4xl mx-auto p-6 pt-32">
+        <main className="max-w-4xl mx-auto p-6 pt-24">
           <StaggeredContent delay={200}>
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold italic text-green-400 mb-2">YRHacks</h1>
