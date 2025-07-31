@@ -72,7 +72,7 @@ export default function ProjectsPage() {
         <div className="mb-12">
           <h1 className="text-4xl font-bold mb-4">Projects</h1>
           <p className="text-gray-300 text-lg">
-            A collection of projects I've built, from mobile games to non-profit initiatives.
+            A collection of projects I've built and work I've done, from mobile games to non-profit initiatives.
           </p>
         </div>
 

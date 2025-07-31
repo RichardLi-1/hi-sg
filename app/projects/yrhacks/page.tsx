@@ -74,16 +74,7 @@ export default function BoinkProjectPage() {
             <h3 className="text-green-400 font-bold mb-2">Overview</h3>
             <div className="space-y-4 text-gray-300">
               <p>
-                Bo!nk is a Windows Vista-inspired inkball game that I conceptualized and designed. As the lead UX
-                designer, I worked with a team to bring this nostalgic game to the App Store.
-              </p>
-              <p>
-                The game features classic inkball mechanics with a nostalgic Windows Vista aesthetic, bringing back
-                memories of the beloved Microsoft game.
-              </p>
-              <p>
-                This project taught me valuable lessons about game development, user interface design, and the App Store
-                submission process.
+                YRHacks is Canada's largest high school hackathon. This year, we had 250+ hackers.
               </p>
             </div>
           </div>
@@ -128,10 +119,9 @@ export default function BoinkProjectPage() {
             </div>
           </div>
 
-          <h2 className="text-2xl font-bold text-green-400 mb-4">Game Design</h2>
+          <h2 className="text-2xl font-bold text-green-400 mb-4">Lanyard Design</h2>
           <p className="text-gray-300 mb-4">
-            As the lead UX designer who conceived the idea, I designed Bo!nk to faithfully recreate the core Inkball
-            experience while adapting it for touch interfaces:
+            A few hackers told us they noticed that the lanyards improved this year!
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
@@ -280,23 +270,13 @@ export default function BoinkProjectPage() {
             {/* Hero Image */}
         <div className="relative mb-8 aspect-video w-full bg-gray-800 overflow-hidden rounded-lg">
           <img
-            src="https://ibb.co/Kj79fq4T"
+            src="https://richardli-1.github.io/Personal-Website/PXL_20240927_153504407.jpg"
             alt="Bo!nk game screenshots"
             className="w-full h-full object-cover"
           />
         </div>
           <p className="text-gray-300">
-            Bo!nk remains available on the{" "}
-            <a
-              href="https://apps.apple.com/ca/app/bo-nk/id1570376501"
-              target="_blank"
-              rel="noreferrer"
-              className="text-green-400 hover:underline"
-            >
-              App Store
-            </a>{" "}
-            and represents an important milestone in my development journey. It sparked my passion for creating digital
-            experiences and laid the foundation for my future work in technology and product development.
+            Getting to know the team over these 10 months was amazing, and I'm grateful to them for taking a chance on me. There was a lot to learn from everyone there, and I'm sure the future is bright.
           </p>
         </div>
       </main>
