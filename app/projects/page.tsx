@@ -14,6 +14,14 @@ const projects = [
     tags: ["iOS", "Swift", "Game Development"],
   },
   {
+    id: "salespatriot",
+    title: "SalesPatriot (YC W25)",
+    year: "2025",
+    description: "Summer Internship",
+    image: "/placeholder.svg?height=400&width=600",
+    tags: ["Non-profit", "Web Development", "Community"],
+  },
+  {
     id: "future-forward",
     title: "Future Forward",
     year: "2024",
