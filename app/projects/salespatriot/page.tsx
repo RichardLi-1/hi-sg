@@ -14,20 +14,12 @@ export default function BoinkProjectPage() {
         </Link>
         <div className="flex items-center space-x-4">
           <a
-            href="https://apps.apple.com/ca/app/bo-nk/id1570376501"
+            href="https://salespatriot.com/"
             target="_blank"
             className="flex items-center text-secondary transition-all hover:text-green-300"
             rel="noreferrer"
           >
-            App Store <ExternalLink className="ml-2 h-4 w-4" />
-          </a>
-          <a
-            href="https://github.com/MarkvilleDev/Boink"
-            target="_blank"
-            className="flex items-center text-secondary transition-all hover:text-green-300"
-            rel="noreferrer"
-          >
-            GitHub <ExternalLink className="ml-2 h-4 w-4" />
+            Website <ExternalLink className="ml-2 h-4 w-4" />
           </a>
         </div>
       </header>
