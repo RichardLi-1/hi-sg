@@ -11,13 +11,14 @@ export default function BoinkProjectPage() {
         <AnimatedHeader
           backHref="/projects"
           backText="Back"
+          currentPage="/projects/boink"
           rightLinks={[
             { href: "https://apps.apple.com/ca/app/bo-nk/id1570376501", text: "App Store", external: true },
             { href: "https://github.com/MarkvilleDev/Boink", text: "GitHub", external: true },
           ]}
         />
 
-        <main className="max-w-4xl mx-auto p-6 pt-24">
+        <main className="max-w-4xl mx-auto p-6" style={{ paddingTop: "120px" }}>
           <StaggeredContent delay={200}>
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold italic text-green-400 mb-2">Bo!nk</h1>

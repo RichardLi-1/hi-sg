@@ -48,6 +48,7 @@ export default function ProjectsPage() {
         <AnimatedHeader
           backHref="/"
           backText="Back"
+          currentPage="/projects"
           rightLinks={[
             { href: "mailto:richardli0@outlook.com", text: "CONTACT" },
             { href: "https://www.linkedin.com/in/richardli0/", text: "LINKEDIN", external: true },
@@ -55,7 +56,7 @@ export default function ProjectsPage() {
           ]}
         />
 
-        <main className="max-w-6xl mx-auto p-6 pt-24">
+        <main className="max-w-6xl mx-auto p-6" style={{ paddingTop: "120px" }}>
           <StaggeredContent delay={200}>
             <div className="mb-12">
               <h1 className="text-4xl font-bold mb-4">Projects</h1>

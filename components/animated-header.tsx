@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink } from "lucide-react"
+import { ArrowLeft, ExternalLink, Home } from "lucide-react"
 
 interface AnimatedHeaderProps {
   backHref?: string
@@ -12,9 +12,16 @@ interface AnimatedHeaderProps {
     external?: boolean
   }>
   isHomepage?: boolean
+  currentPage?: string
 }
 
-export function AnimatedHeader({ backHref, backText, rightLinks = [], isHomepage = false }: AnimatedHeaderProps) {
+export function AnimatedHeader({
+  backHref,
+  backText,
+  rightLinks = [],
+  isHomepage = false,
+  currentPage = "",
+}: AnimatedHeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -26,6 +33,139 @@ export function AnimatedHeader({ backHref, backText, rightLinks = [], isHomepage
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Get contextual navigation based on current page
+  const getContextualNav = () => {
+    if (isHomepage) {
+      return isScrolled ? (
+        <>
+          <Link href="/projects" className="text-gray-400 hover:text-green-300 transition-colors text-sm">
+            Projects
+          </Link>
+          <a
+            href="mailto:richardli0@outlook.com"
+            className="text-gray-400 hover:text-green-300 transition-colors text-sm"
+          >
+            Contact
+          </a>
+          <a
+            href="https://www.linkedin.com/in/richardli0/"
+            className="text-gray-400 hover:text-green-300 transition-colors"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </>
+      ) : (
+        <>
+          <Link href="/projects" className="hover:text-green-300 transition-colors">
+            PROJECTS
+          </Link>
+          <a href="mailto:richardli0@outlook.com" className="hover:text-green-300 transition-colors">
+            CONTACT
+          </a>
+          <a
+            href="https://www.linkedin.com/in/richardli0/"
+            className="hover:text-green-300 transition-colors flex items-center gap-1"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LINKEDIN <ExternalLink className="w-3 h-3" />
+          </a>
+          <a
+            href="https://github.com/RichardLi-1"
+            className="hover:text-green-300 transition-colors flex items-center gap-1"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GITHUB <ExternalLink className="w-3 h-3" />
+          </a>
+        </>
+      )
+    }
+
+    // For project pages
+    if (currentPage.includes("/projects")) {
+      return isScrolled ? (
+        <>
+          <Link href="/" className="text-gray-400 hover:text-green-300 transition-colors">
+            <Home className="w-3 h-3" />
+          </Link>
+          {!currentPage.includes("/projects/") && (
+            <a
+              href="mailto:richardli0@outlook.com"
+              className="text-gray-400 hover:text-green-300 transition-colors text-sm"
+            >
+              Contact
+            </a>
+          )}
+          {currentPage.includes("/projects/") && (
+            <Link href="/projects" className="text-gray-400 hover:text-green-300 transition-colors text-sm">
+              Projects
+            </Link>
+          )}
+          <a
+            href="https://www.linkedin.com/in/richardli0/"
+            className="text-gray-400 hover:text-green-300 transition-colors"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </>
+      ) : (
+        rightLinks.map((link, index) => (
+          <a
+            key={index}
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            className="flex items-center text-gray-400 transition-all hover:text-green-300"
+            rel={link.external ? "noreferrer" : undefined}
+          >
+            {link.text}
+            {link.external && <ExternalLink className="ml-2 h-4 w-4" />}
+          </a>
+        ))
+      )
+    }
+
+    // Default navigation
+    return isScrolled ? (
+      <>
+        <Link href="/" className="text-gray-400 hover:text-green-300 transition-colors">
+          <Home className="w-3 h-3" />
+        </Link>
+        <a
+          href="mailto:richardli0@outlook.com"
+          className="text-gray-400 hover:text-green-300 transition-colors text-sm"
+        >
+          Contact
+        </a>
+        <a
+          href="https://www.linkedin.com/in/richardli0/"
+          className="text-gray-400 hover:text-green-300 transition-colors"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <ExternalLink className="w-3 h-3" />
+        </a>
+      </>
+    ) : (
+      rightLinks.map((link, index) => (
+        <a
+          key={index}
+          href={link.href}
+          target={link.external ? "_blank" : undefined}
+          className="flex items-center text-gray-400 transition-all hover:text-green-300"
+          rel={link.external ? "noreferrer" : undefined}
+        >
+          {link.text}
+          {link.external && <ExternalLink className="ml-2 h-4 w-4" />}
+        </a>
+      ))
+    )
+  }
 
   return (
     <header
@@ -59,73 +199,7 @@ export function AnimatedHeader({ backHref, backText, rightLinks = [], isHomepage
 
           {/* Right side navigation */}
           <nav className={`flex items-center transition-all duration-700 ${isScrolled ? "space-x-2" : "space-x-8"}`}>
-            {isScrolled ? (
-              // Compact orb navigation
-              <>
-                {isHomepage && (
-                  <Link href="/projects" className="text-gray-400 hover:text-green-300 transition-colors text-sm">
-                    Projects
-                  </Link>
-                )}
-                <a
-                  href="mailto:richardli0@outlook.com"
-                  className="text-gray-400 hover:text-green-300 transition-colors text-sm"
-                >
-                  Contact
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/richardli0/"
-                  className="text-gray-400 hover:text-green-300 transition-colors"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </>
-            ) : (
-              // Full navigation
-              <>
-                {isHomepage ? (
-                  <>
-                    <Link href="/projects" className="hover:text-green-300 transition-colors">
-                      PROJECTS
-                    </Link>
-                    <a href="mailto:richardli0@outlook.com" className="hover:text-green-300 transition-colors">
-                      CONTACT
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/richardli0/"
-                      className="hover:text-green-300 transition-colors flex items-center gap-1"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      LINKEDIN <ExternalLink className="w-3 h-3" />
-                    </a>
-                    <a
-                      href="https://github.com/RichardLi-1"
-                      className="hover:text-green-300 transition-colors flex items-center gap-1"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      GITHUB <ExternalLink className="w-3 h-3" />
-                    </a>
-                  </>
-                ) : (
-                  rightLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      className="flex items-center text-gray-400 transition-all hover:text-green-300"
-                      rel={link.external ? "noreferrer" : undefined}
-                    >
-                      {link.text}
-                      {link.external && <ExternalLink className="ml-2 h-4 w-4" />}
-                    </a>
-                  ))
-                )}
-              </>
-            )}
+            {getContextualNav()}
           </nav>
         </div>
       </div>

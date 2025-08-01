@@ -133,11 +133,9 @@ export default function PersonalWebsite() {
     <AnimatedPage>
       <div className="min-h-screen bg-black text-green-400 font-mono">
         {/* Header */}
-        <StaggeredContent delay={0}>
-          <AnimatedHeader isHomepage={true} />
-        </StaggeredContent>
+        <AnimatedHeader isHomepage={true} currentPage="/" />
 
-        <main className="max-w-4xl mx-auto p-6 space-y-8 pt-32">
+        <main className="max-w-4xl mx-auto p-6 space-y-8" style={{ paddingTop: "120px" }}>
           {/* Introduction */}
           <StaggeredContent delay={200}>
             <section className="space-y-4">
