@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink, Home } from "lucide-react"
+import { ArrowLeft, ExternalLink, Home, Mail, Github, Linkedin } from "lucide-react"
 
 interface AnimatedHeaderProps {
   backHref?: string
@@ -23,6 +23,7 @@ export function AnimatedHeader({
   currentPage = "",
 }: AnimatedHeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,8 +31,18 @@ export function AnimatedHeader({
       setIsScrolled(scrolled)
     }
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    handleResize()
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("resize", handleResize)
+    }
   }, [])
 
   // Get contextual navigation based on current page
@@ -40,13 +51,10 @@ export function AnimatedHeader({
       return isScrolled ? (
         <>
           <Link href="/projects" className="text-gray-400 hover:text-green-300 transition-colors text-sm">
-            Projects
+            {isMobile ? "Projects" : "Projects"}
           </Link>
-          <a
-            href="mailto:richardli0@outlook.com"
-            className="text-gray-400 hover:text-green-300 transition-colors text-sm"
-          >
-            Contact
+          <a href="mailto:richardli0@outlook.com" className="text-gray-400 hover:text-green-300 transition-colors">
+            {isMobile ? <Mail className="w-4 h-4" /> : <span className="text-sm">Contact</span>}
           </a>
           <a
             href="https://www.linkedin.com/in/richardli0/"
@@ -54,7 +62,7 @@ export function AnimatedHeader({
             target="_blank"
             rel="noreferrer"
           >
-            <ExternalLink className="w-3 h-3" />
+            {isMobile ? <Linkedin className="w-4 h-4" /> : <ExternalLink className="w-3 h-3" />}
           </a>
         </>
       ) : (
@@ -63,7 +71,7 @@ export function AnimatedHeader({
             PROJECTS
           </Link>
           <a href="mailto:richardli0@outlook.com" className="hover:text-green-300 transition-colors">
-            CONTACT
+            {isMobile ? <Mail className="w-5 h-5" /> : "CONTACT"}
           </a>
           <a
             href="https://www.linkedin.com/in/richardli0/"
@@ -71,7 +79,13 @@ export function AnimatedHeader({
             target="_blank"
             rel="noreferrer"
           >
-            LINKEDIN <ExternalLink className="w-3 h-3" />
+            {isMobile ? (
+              <Linkedin className="w-5 h-5" />
+            ) : (
+              <>
+                LINKEDIN <ExternalLink className="w-3 h-3" />
+              </>
+            )}
           </a>
           <a
             href="https://github.com/RichardLi-1"
@@ -79,7 +93,13 @@ export function AnimatedHeader({
             target="_blank"
             rel="noreferrer"
           >
-            GITHUB <ExternalLink className="w-3 h-3" />
+            {isMobile ? (
+              <Github className="w-5 h-5" />
+            ) : (
+              <>
+                GITHUB <ExternalLink className="w-3 h-3" />
+              </>
+            )}
           </a>
         </>
       )
@@ -93,11 +113,8 @@ export function AnimatedHeader({
             <Home className="w-3 h-3" />
           </Link>
           {!currentPage.includes("/projects/") && (
-            <a
-              href="mailto:richardli0@outlook.com"
-              className="text-gray-400 hover:text-green-300 transition-colors text-sm"
-            >
-              Contact
+            <a href="mailto:richardli0@outlook.com" className="text-gray-400 hover:text-green-300 transition-colors">
+              {isMobile ? <Mail className="w-4 h-4" /> : <span className="text-sm">Contact</span>}
             </a>
           )}
           {currentPage.includes("/projects/") && (
@@ -111,7 +128,7 @@ export function AnimatedHeader({
             target="_blank"
             rel="noreferrer"
           >
-            <ExternalLink className="w-3 h-3" />
+            {isMobile ? <Linkedin className="w-4 h-4" /> : <ExternalLink className="w-3 h-3" />}
           </a>
         </>
       ) : (
@@ -123,8 +140,18 @@ export function AnimatedHeader({
             className="flex items-center text-gray-400 transition-all hover:text-green-300"
             rel={link.external ? "noreferrer" : undefined}
           >
-            {link.text}
-            {link.external && <ExternalLink className="ml-2 h-4 w-4" />}
+            {isMobile && link.text === "CONTACT" ? (
+              <Mail className="w-5 h-5" />
+            ) : isMobile && link.text === "LINKEDIN" ? (
+              <Linkedin className="w-5 h-5" />
+            ) : isMobile && link.text === "GITHUB" ? (
+              <Github className="w-5 h-5" />
+            ) : (
+              <>
+                {link.text}
+                {link.external && !isMobile && <ExternalLink className="ml-2 h-4 w-4" />}
+              </>
+            )}
           </a>
         ))
       )
@@ -136,11 +163,8 @@ export function AnimatedHeader({
         <Link href="/" className="text-gray-400 hover:text-green-300 transition-colors">
           <Home className="w-3 h-3" />
         </Link>
-        <a
-          href="mailto:richardli0@outlook.com"
-          className="text-gray-400 hover:text-green-300 transition-colors text-sm"
-        >
-          Contact
+        <a href="mailto:richardli0@outlook.com" className="text-gray-400 hover:text-green-300 transition-colors">
+          {isMobile ? <Mail className="w-4 h-4" /> : <span className="text-sm">Contact</span>}
         </a>
         <a
           href="https://www.linkedin.com/in/richardli0/"
@@ -148,7 +172,7 @@ export function AnimatedHeader({
           target="_blank"
           rel="noreferrer"
         >
-          <ExternalLink className="w-3 h-3" />
+          {isMobile ? <Linkedin className="w-4 h-4" /> : <ExternalLink className="w-3 h-3" />}
         </a>
       </>
     ) : (
@@ -160,8 +184,18 @@ export function AnimatedHeader({
           className="flex items-center text-gray-400 transition-all hover:text-green-300"
           rel={link.external ? "noreferrer" : undefined}
         >
-          {link.text}
-          {link.external && <ExternalLink className="ml-2 h-4 w-4" />}
+          {isMobile && link.text === "CONTACT" ? (
+            <Mail className="w-5 h-5" />
+          ) : isMobile && link.text === "LINKEDIN" ? (
+            <Linkedin className="w-5 h-5" />
+          ) : isMobile && link.text === "GITHUB" ? (
+            <Github className="w-5 h-5" />
+          ) : (
+            <>
+              {link.text}
+              {link.external && !isMobile && <ExternalLink className="ml-2 h-4 w-4" />}
+            </>
+          )}
         </a>
       ))
     )

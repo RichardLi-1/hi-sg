@@ -44,7 +44,7 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-black text-green-400 font-mono">
+      <div className="min-h-screen bg-black text-green-400">
         <AnimatedHeader
           backHref="/"
           backText="Back"

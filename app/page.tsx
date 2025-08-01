@@ -131,7 +131,7 @@ export default function PersonalWebsite() {
 
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-black text-green-400 font-mono">
+      <div className="min-h-screen bg-black text-green-400">
         {/* Header */}
         <AnimatedHeader isHomepage={true} currentPage="/" />
 
@@ -148,7 +148,7 @@ export default function PersonalWebsite() {
                       href="https://en.wikipedia.org/wiki/Toronto"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
+                      className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
                     >
                       toronto
                     </a>
@@ -174,7 +174,7 @@ export default function PersonalWebsite() {
                       href="https://uwaterloo.ca/systems-design-engineering/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
+                      className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
                     >
                       {" "}
                       systems design engineering{" "}
@@ -189,7 +189,7 @@ export default function PersonalWebsite() {
                       href="https://uwaterloo.ca/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
+                      className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
                     >
                       university of waterloo
                     </a>
@@ -264,8 +264,7 @@ export default function PersonalWebsite() {
                   href="https://www.futureforward.info/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-green-300 transition-colors"
-                  class="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
+                  className="underline hover:text-green-300 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
                 >
                   future forward
                 </a>
@@ -338,14 +337,14 @@ export default function PersonalWebsite() {
               I'd love to hear from you! Want to hire me? or simply wanna chat? Feel free to reach out by{" "}
               <a
                 href="mailto:richardli0@outlook.com"
-                class="text-stone-400 underline hover:text-stone-100 font-minecraft inline-block transform transition-transform duration-200 hover:scale-110"
+                className="text-stone-400 underline hover:text-stone-100 inline-block transform transition-transform duration-200 hover:scale-110"
               >
                 email
               </a>
               , or connect with me on{" "}
               <a
                 href="https://www.linkedin.com/in/richardli0"
-                class="text-stone-400 underline hover:text-stone-100 font-minecraft inline-block transform transition-transform duration-200 hover:scale-110"
+                className="text-stone-400 underline hover:text-stone-100 inline-block transform transition-transform duration-200 hover:scale-110"
               >
                 LinkedIn
               </a>

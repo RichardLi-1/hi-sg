@@ -7,7 +7,7 @@ import { AnimatedHeader } from "@/components/animated-header"
 export default function YRHacksProjectPage() {
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-black text-green-400 font-mono">
+      <div className="min-h-screen bg-black text-green-400">
         <AnimatedHeader
           backHref="/projects"
           backText="Back"

@@ -7,14 +7,14 @@ import { AnimatedHeader } from "@/components/animated-header"
 export default function BoinkProjectPage() {
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-black text-green-400 font-mono">
+      <div className="min-h-screen bg-black text-green-400">
         <AnimatedHeader
           backHref="/projects"
           backText="Back"
           currentPage="/projects/boink"
           rightLinks={[
             { href: "https://apps.apple.com/ca/app/bo-nk/id1570376501", text: "App Store", external: true },
-            { href: "https://github.com/MarkvilleDev/Boink", text: "GitHub", external: true },
+            { href: "https://github.com/MarkvilleDev/Boink", text: "GITHUB", external: true },
           ]}
         />
 
