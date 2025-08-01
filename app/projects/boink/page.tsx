@@ -237,17 +237,14 @@ export default function BoinkProjectPage() {
               </p>
 
               <ul className="text-gray-300 space-y-2 mb-6">
-                <li>• Learning Apple's App Store guidelines and submission requirements</li>
-                <li>• Creating app icons, screenshots, and marketing materials</li>
-                <li>• Writing compelling app descriptions and metadata</li>
-                <li>• Going through the review process and addressing feedback</li>
-                <li>• Understanding app analytics and user engagement metrics</li>
+                <li> Learning Apple's App Store guidelines and submission requirements</li>
+                <li> Creating app icons, screenshots, and marketing materials</li>
+                <li> Writing compelling app descriptions and metadata</li>
+                <li> Going through the review process and addressing feedback</li>
+                <li> Understanding app analytics and user engagement metrics</li>
+                <li> Renaming the game from "Boink" to "Bo!nk," because the original name is a swear word in Dutch. The App Store forced us to change this</li>
               </ul>
 
-              <p className="text-gray-300 mb-4">
-                Fun Fact: the original name of the game was "Boink," a swear word in Dutch. App Store forced us to
-                change this to "Bo!nk".
-              </p>
 
               <h2 className="text-2xl font-bold text-green-400 mb-4">Results & Takeaways</h2>
               <p className="text-gray-300 mb-4">
