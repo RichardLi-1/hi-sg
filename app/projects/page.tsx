@@ -36,7 +36,7 @@ const projects = [
     title: "YRHacks",
     year: "2024-2025",
     description: "Helped organize Canada's largest high school hackathon",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "https://media.licdn.com/dms/image/v2/D4E2DAQE4xiHmiaaWZQ/profile-treasury-image-shrink_800_800/B4EZYeEGJuHcAg-/0/1744261115420?e=1754640000&v=beta&t=eFgS3M3TvCOVyE14Q4P0BbKeXvo-6QywSa5hjZStaHw?height=400&width=600",
     tags: ["Community", "Logistics", "Organizations"],
   },
   {
