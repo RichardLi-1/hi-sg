@@ -45,13 +45,14 @@ export default function SalesPatriotProjectPage() {
                 <div>
                   <h3 className="text-green-400 font-bold mb-2">Team</h3>
                   <div className="space-y-1 text-gray-300">
-                    <a href="https://www.linkedin.com/in/matthewkkimm/" className="underline">
+                    <a href="https://www.linkedin.com/in/matthewkkimm/" target="_blank" className="underline">
                       <p>Matthew Kim</p>
                     </a>
-                    <a href="https://www.linkedin.com/in/james-pham-915a08309/" className="underline">
+                    <a href="https://www.linkedin.com/in/james-pham-915a08309/" target="_blank"  className="underline">
                       <p>James Pham</p>
                     </a>
                       <p>Nour Tanta</p>
+                      <p>Praneil Bhashyakarla</p>
                   </div>
                 </div>
 
