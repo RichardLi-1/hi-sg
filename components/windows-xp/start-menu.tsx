@@ -5,11 +5,29 @@ import type React from "react"
 import { ProjectsIEContent } from "./projects-ie-content"
 
 export function StartMenu() {
-  const { openWindow, toggleStartMenu } = useWindowsXP()
+  const { openWindow, toggleStartMenu, toggleXPMode } = useWindowsXP()
 
   const handleMenuClick = (action: () => void) => {
     action()
     toggleStartMenu()
+  }
+
+  const handleLogOff = () => {
+    // Play logoff sound
+    const audio = new Audio("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/windows%20xp%20logoff-qVypi1jbvZTHC27uDDxoJSOaMQWGA4.mp3")
+    audio.play().catch(console.error)
+
+    toggleXPMode() // Turn off XP mode
+    toggleStartMenu() // Close start menu
+  }
+
+  const handleTurnOffComputer = () => {
+    // Play logoff sound
+    const audio = new Audio("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/windows%20xp%20logoff-qVypi1jbvZTHC27uDDxoJSOaMQWGA4.mp3")
+    audio.play().catch(console.error)
+
+    toggleXPMode() // Turn off XP mode
+    toggleStartMenu() // Close start menu
   }
 
   return (
@@ -64,8 +82,15 @@ export function StartMenu() {
 
       {/* Bottom */}
       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-orange-400 to-orange-600 p-2 flex justify-between rounded-br-lg">
-        <button className="text-white text-sm font-bold">Log Off</button>
-        <button className="text-white text-sm font-bold">Turn Off Computer</button>
+        <button onClick={handleLogOff} className="text-white text-sm font-bold hover:bg-orange-500 px-2 py-1 rounded">
+          Log Off
+        </button>
+        <button
+          onClick={handleTurnOffComputer}
+          className="text-white text-sm font-bold hover:bg-orange-500 px-2 py-1 rounded"
+        >
+          Turn Off Computer
+        </button>
       </div>
     </div>
   )

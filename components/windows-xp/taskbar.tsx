@@ -4,6 +4,10 @@ import { useWindowsXP } from "@/contexts/windows-xp-context"
 export function Taskbar() {
   const { windows, focusWindow, toggleStartMenu, isStartMenuOpen, openWindow } = useWindowsXP()
 
+  const visibleWindows = windows.filter((w) => !w.isMinimized)
+  const maxWindowButtons = Math.floor((window.innerWidth - 200) / 120) // Approximate calculation
+  const shouldShrink = visibleWindows.length > maxWindowButtons
+
   return (
     <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-b from-blue-400 to-blue-600 border-t-2 border-blue-300 flex items-center px-1">
       <button
@@ -49,18 +53,18 @@ export function Taskbar() {
       </button>
 
       {/* Window Buttons */}
-      <div className="flex-1 flex items-center ml-2 space-x-1">
-        {windows
-          .filter((w) => !w.isMinimized)
-          .map((window) => (
-            <button
-              key={window.id}
-              onClick={() => focusWindow(window.id)}
-              className="h-8 px-3 bg-gradient-to-b from-gray-200 to-gray-400 hover:from-gray-100 hover:to-gray-300 border border-gray-500 rounded-sm text-black text-xs truncate max-w-40"
-            >
-              {window.title}
-            </button>
-          ))}
+      <div className="flex-1 flex items-center ml-2 space-x-1 overflow-hidden">
+        {visibleWindows.map((window) => (
+          <button
+            key={window.id}
+            onClick={() => focusWindow(window.id)}
+            className={`h-8 px-3 bg-gradient-to-b from-gray-200 to-gray-400 hover:from-gray-100 hover:to-gray-300 border border-gray-500 rounded-sm text-black text-xs truncate ${
+              shouldShrink ? "max-w-24 min-w-16" : "max-w-40"
+            }`}
+          >
+            {window.title}
+          </button>
+        ))}
       </div>
 
       {/* System Tray */}
