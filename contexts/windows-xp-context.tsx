@@ -42,6 +42,10 @@ export function WindowsXPProvider({ children }: { children: React.ReactNode }) {
         // Play startup sound when enabling XP mode
         const audio = new Audio("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ytmp3free.cc_microsoft-windows-xp-startup-sound-youtubemp3free.org-jm7S6oGjDVJxF19pr1JBJX95evAsxg.mp3")
         audio.play().catch(console.error)
+      } else {
+        setWindows([])
+        setIsStartMenuOpen(false)
+        setNextZIndex(1000)
       }
       return !prev
     })

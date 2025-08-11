@@ -35,7 +35,7 @@ export function WindowsXPDesktop() {
         position: { x: 750, y: 150 },
         size: { width: 400, height: 300 },
       })
-    }, 5000)
+    }, 7000)
 
     return () => clearTimeout(timer)
   }, [])
