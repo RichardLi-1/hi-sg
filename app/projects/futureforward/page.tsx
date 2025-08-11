@@ -61,12 +61,20 @@ export default function FutureForwardProjectPage() {
                   <h3 className="text-green-400 font-bold mb-2">Team</h3>
                   <div className="space-y-1 text-gray-300">
                     <a
-                      href="https://www.linkedin.com/in/richardli0/"
+                      href="https://www.linkedin.com/in/michelle-matthew-35b6931aa/"
                       target="_blank"
                       className="underline"
                       rel="noreferrer"
                     >
-                      <p>Richard Li</p>
+                      <p>Michelle Matthew</p>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/kirsten-hsiang-bb64b2324/"
+                      target="_blank"
+                      className="underline"
+                      rel="noreferrer"
+                    >
+                      <p>Kirsten Hsiang</p>
                     </a>
                     {/* Add other team members here if applicable */}
                   </div>
