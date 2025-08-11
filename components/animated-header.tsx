@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ArrowLeft, ExternalLink, Home, Mail, Github, Linkedin } from "lucide-react"
+import { useWindowsXP } from "@/contexts/windows-xp-context"
 
 interface AnimatedHeaderProps {
   backHref?: string
@@ -24,6 +25,7 @@ export function AnimatedHeader({
 }: AnimatedHeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const { isXPMode, toggleXPMode } = useWindowsXP()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,6 +66,19 @@ export function AnimatedHeader({
           >
             {isMobile ? <Linkedin className="w-4 h-4" /> : <ExternalLink className="w-3 h-3" />}
           </a>
+          <button
+            onClick={toggleXPMode}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
+              isXPMode ? "bg-green-600" : "bg-gray-600"
+            }`}
+          >
+            <span className="sr-only">Toggle Windows XP mode</span>
+            <span
+              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                isXPMode ? "translate-x-6" : "translate-x-1"
+              }`}
+            />
+          </button>
         </>
       ) : (
         <>
@@ -101,6 +116,24 @@ export function AnimatedHeader({
               </>
             )}
           </a>
+          <div className="flex items-center space-x-2">
+            <span className={`text-sm transition-colors ${isXPMode ? "text-green-300" : "text-gray-400"}`}>
+              WINDOWS XP
+            </span>
+            <button
+              onClick={toggleXPMode}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
+                isXPMode ? "bg-green-600" : "bg-gray-600"
+              }`}
+            >
+              <span className="sr-only">Toggle Windows XP mode</span>
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  isXPMode ? "translate-x-6" : "translate-x-1"
+                }`}
+              />
+            </button>
+          </div>
         </>
       )
     }
@@ -130,6 +163,19 @@ export function AnimatedHeader({
           >
             {isMobile ? <Linkedin className="w-4 h-4" /> : <ExternalLink className="w-3 h-3" />}
           </a>
+          <button
+            onClick={toggleXPMode}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
+              isXPMode ? "bg-green-600" : "bg-gray-600"
+            }`}
+          >
+            <span className="sr-only">Toggle Windows XP mode</span>
+            <span
+              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                isXPMode ? "translate-x-6" : "translate-x-1"
+              }`}
+            />
+          </button>
         </>
       ) : (
         rightLinks.map((link, index) => (
@@ -174,6 +220,19 @@ export function AnimatedHeader({
         >
           {isMobile ? <Linkedin className="w-4 h-4" /> : <ExternalLink className="w-3 h-3" />}
         </a>
+        <button
+          onClick={toggleXPMode}
+          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
+            isXPMode ? "bg-green-600" : "bg-gray-600"
+          }`}
+        >
+          <span className="sr-only">Toggle Windows XP mode</span>
+          <span
+            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+              isXPMode ? "translate-x-6" : "translate-x-1"
+            }`}
+          />
+        </button>
       </>
     ) : (
       rightLinks.map((link, index) => (

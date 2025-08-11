@@ -1,0 +1,218 @@
+"use client"
+import { useState } from "react"
+import { useWindowsXP } from "@/contexts/windows-xp-context"
+
+const mainProjects = [
+  {
+    id: "boink",
+    title: "Bo!nk",
+    year: "2021",
+    description: "A Windows Vista-inspired inkball game published on the App Store",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OFGQDkrP2BvNmhLieOxExwEZBsCGcq.png",
+    logo: "/images/boink-logo.webp",
+    tags: ["iOS", "Swift", "Game Development"],
+  },
+  {
+    id: "salespatriot",
+    title: "SalesPatriot (YC W25)",
+    year: "2025",
+    description: "Internship",
+    image: "https://richardli-1.github.io/Personal-Website/salespatriott.png?height=400&width=600",
+    tags: ["Internship", "Product Design", "AI"],
+  },
+  {
+    id: "futureforward",
+    title: "Future Forward",
+    year: "2024-2025",
+    description: "Non-profit focusing on helping students discover their vocations",
+    image: "images/IMG_7745.jpeg",
+    logo: "/images/future-forward-logo.png",
+    tags: ["Non-profit", "Web Development", "Community"],
+  },
+  {
+    id: "yrhacks",
+    title: "YRHacks",
+    year: "2024-2025",
+    description: "Helped organize Canada's largest high school hackathon",
+    image: "images/yrhacks crowd.jpeg",
+    logo: "/images/yrhacks-logo.png",
+    tags: ["Community", "Logistics", "Organizations"],
+  },
+  {
+    id: "cec",
+    title: "Career Education Council",
+    year: "2024-2025",
+    description: "",
+    image: "",
+    logo: "/images/cec-logo.webp",
+    tags: ["iOS", "Swift", "App Development"],
+  },
+]
+
+const additionalProjects = [
+  {
+    id: "markville-rfp",
+    title: "RFP: Rebranding the Markville Secondary Plan",
+    year: "2024",
+    description:
+      "City Design Challenge hackathon winner - comprehensive rebranding proposal for Markville Secondary Plan",
+    image: "/images/markville-rfp-cover.png",
+    tags: ["Design", "Urban Planning", "Hackathon Winner"],
+  },
+]
+
+export function ProjectsIEContent() {
+  const [showAdditional, setShowAdditional] = useState(false)
+  const { openWindow } = useWindowsXP()
+
+  const allProjects = showAdditional ? [...mainProjects, ...additionalProjects] : mainProjects
+
+  const openProjectWindow = (project: any) => {
+    openWindow({
+      title: `${project.title} - Internet Explorer`,
+      content: <ProjectDetailContent project={project} />,
+      isMinimized: false,
+      isMaximized: false,
+      position: { x: 250, y: 250 },
+      size: { width: 700, height: 500 },
+    })
+  }
+
+  return (
+    <div className="h-full bg-white">
+      {/* IE Toolbar */}
+      <div className="bg-gradient-to-b from-gray-100 to-gray-200 border-b border-gray-300 p-2">
+        <div className="flex items-center space-x-2 text-sm">
+          <button className="px-2 py-1 hover:bg-gray-300 rounded">File</button>
+          <button className="px-2 py-1 hover:bg-gray-300 rounded">Edit</button>
+          <button className="px-2 py-1 hover:bg-gray-300 rounded">View</button>
+          <button className="px-2 py-1 hover:bg-gray-300 rounded">Favorites</button>
+          <button className="px-2 py-1 hover:bg-gray-300 rounded">Tools</button>
+          <button className="px-2 py-1 hover:bg-gray-300 rounded">Help</button>
+        </div>
+        <div className="flex items-center mt-2 space-x-2">
+          <button className="px-3 py-1 bg-gray-200 border border-gray-400 rounded text-sm">Back</button>
+          <button className="px-3 py-1 bg-gray-200 border border-gray-400 rounded text-sm">Forward</button>
+          <div className="flex-1 bg-white border border-gray-400 px-2 py-1 text-sm">richardli.dev/projects</div>
+          <button className="px-3 py-1 bg-gray-200 border border-gray-400 rounded text-sm">Go</button>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-4 overflow-y-auto h-full bg-white">
+        <h1 className="text-2xl font-bold mb-4 text-black">Projects</h1>
+        <p className="text-gray-600 mb-6">
+          A collection of projects I've built and work I've done, from mobile games to non-profit initiatives.
+        </p>
+
+        <div className="grid grid-cols-1 gap-4">
+          {allProjects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => openProjectWindow(project)}
+              className="border border-gray-300 p-4 hover:bg-gray-50 cursor-pointer rounded"
+            >
+              <div className="flex items-start space-x-4">
+                {project.logo && !project.logo.includes("placeholder.svg") && (
+                  <img
+                    src={project.logo || "/placeholder.svg"}
+                    alt={`${project.title} logo`}
+                    className="w-12 h-12 rounded object-contain flex-shrink-0"
+                  />
+                )}
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-lg font-semibold text-blue-600 hover:underline">{project.title}</h3>
+                    <span className="text-gray-500 text-sm">{project.year}</span>
+                  </div>
+                  <p className="text-gray-700 text-sm mb-2">{project.description}</p>
+                  <div className="flex flex-wrap gap-1">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="px-2 py-1 bg-gray-200 text-gray-700 text-xs rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {!showAdditional && (
+          <div className="mt-6 text-center">
+            <button
+              onClick={() => setShowAdditional(true)}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Load More Projects
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function ProjectDetailContent({ project }: { project: any }) {
+  return (
+    <div className="h-full bg-white p-4 overflow-y-auto">
+      {/* IE Toolbar for project detail */}
+      <div className="bg-gradient-to-b from-gray-100 to-gray-200 border-b border-gray-300 p-2 mb-4">
+        <div className="flex items-center space-x-2 text-sm">
+          <button className="px-2 py-1 hover:bg-gray-300 rounded">File</button>
+          <button className="px-2 py-1 hover:bg-gray-300 rounded">Edit</button>
+          <button className="px-2 py-1 hover:bg-gray-300 rounded">View</button>
+        </div>
+        <div className="flex items-center mt-2 space-x-2">
+          <button className="px-3 py-1 bg-gray-200 border border-gray-400 rounded text-sm">Back</button>
+          <div className="flex-1 bg-white border border-gray-400 px-2 py-1 text-sm">
+            richardli.dev/projects/{project.id}
+          </div>
+        </div>
+      </div>
+
+      {/* Project content */}
+      <div className="flex items-start space-x-4 mb-6">
+        {project.logo && !project.logo.includes("placeholder.svg") && (
+          <img
+            src={project.logo || "/placeholder.svg"}
+            alt={`${project.title} logo`}
+            className="w-16 h-16 rounded object-contain flex-shrink-0"
+          />
+        )}
+        <div>
+          <h1 className="text-2xl font-bold text-black mb-2">{project.title}</h1>
+          <p className="text-gray-600 mb-2">{project.year}</p>
+          <p className="text-gray-700">{project.description}</p>
+        </div>
+      </div>
+
+      {project.image && (
+        <div className="mb-6">
+          <img
+            src={project.image || "/placeholder.svg"}
+            alt={project.title}
+            className="w-full max-w-md rounded border border-gray-300"
+          />
+        </div>
+      )}
+
+      <div className="mb-4">
+        <h3 className="font-semibold text-black mb-2">Technologies:</h3>
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag: string) => (
+            <span key={tag} className="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="text-gray-600 text-sm">
+        <p>This project showcases my work in {project.tags.join(", ").toLowerCase()}.</p>
+        <p className="mt-2">For more details, please contact me directly.</p>
+      </div>
+    </div>
+  )
+}
