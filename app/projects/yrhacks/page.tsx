@@ -49,7 +49,7 @@ export default function YRHacksProjectPage() {
             {/* Hero Image */}
             <div className="relative mb-8 aspect-video w-full bg-gray-800 overflow-hidden rounded-lg">
               <img
-                src="https://media.licdn.com/dms/image/v2/D4E2DAQE4xiHmiaaWZQ/profile-treasury-image-shrink_800_800/B4EZYeEGJuHcAg-/0/1744261115420?e=1754640000&v=beta&t=eFgS3M3TvCOVyE14Q4P0BbKeXvo-6QywSa5hjZStaHw"
+                src="/images/yrhacks crowd.png"
                 alt="YRHacks event photos"
                 className="w-full h-full object-cover"
               />
