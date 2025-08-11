@@ -9,6 +9,24 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Richard Li",
   description: "Personal website and chatbot for Richard Li",
+  openGraph: {
+    title: "Richard Li",
+    description: "Personal website and chatbot for Richard Li",
+    images: [
+      {
+        url: "/images/website-thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Richard Li's Windows XP-style personal website",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Richard Li",
+    description: "Personal website and chatbot for Richard Li",
+    images: ["/images/website-thumbnail.png"],
+  },
     generator: 'v0.dev'
 }
 
