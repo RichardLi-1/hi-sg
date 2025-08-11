@@ -1,19 +1,21 @@
 "use client"
+import { useState } from "react"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { Footer } from "@/components/footer"
 import { AnimatedPage } from "@/components/animated-page"
 import { StaggeredContent } from "@/components/staggered-content"
 import { AnimatedHeader } from "@/components/animated-header"
 
-const projects = [
+const mainProjects = [
   {
     id: "boink",
     title: "Bo!nk",
     year: "2021",
     description: "A Windows Vista-inspired inkball game published on the App Store",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OFGQDkrP2BvNmhLieOxExwEZBsCGcq.png",
-    logo: "/images/boink-logo.webp", // Added Bo!nk logo
+    logo: "/images/boink-logo.webp",
     tags: ["iOS", "Swift", "Game Development"],
   },
   {
@@ -22,15 +24,15 @@ const projects = [
     year: "2025",
     description: "Internship",
     image: "https://richardli-1.github.io/Personal-Website/salespatriott.png?height=400&width=600",
-    tags: ["Non-profit", "Web Development", "Community"],
+    tags: ["Internship", "Product Design", "AI"],
   },
   {
     id: "futureforward",
     title: "Future Forward",
-    year: "2024",
+    year: "2024-2025",
     description: "Non-profit focusing on helping students discover their vocations",
     image: "images/IMG_7745.jpeg",
-    logo: "/images/future-forward-logo.png", // Added Future Forward logo
+    logo: "/images/future-forward-logo.png",
     tags: ["Non-profit", "Web Development", "Community"],
   },
   {
@@ -39,7 +41,7 @@ const projects = [
     year: "2024-2025",
     description: "Helped organize Canada's largest high school hackathon",
     image: "images/yrhacks crowd.jpeg",
-    logo: "/images/yrhacks-logo.png", // Added YRHacks logo
+    logo: "/images/yrhacks-logo.png",
     tags: ["Community", "Logistics", "Organizations"],
   },
   {
@@ -48,12 +50,28 @@ const projects = [
     year: "2024-2025",
     description: "",
     image: "",
-    logo: "/images/cec-logo.webp", // Added CEC logo
+    logo: "/images/cec-logo.webp",
     tags: ["iOS", "Swift", "App Development"],
   },
 ]
 
+const additionalProjects = [
+  {
+    id: "markville-rfp",
+    title: "RFP: Rebranding the Markville Secondary Plan",
+    year: "2024",
+    description:
+      "City Design Challenge hackathon winner - comprehensive rebranding proposal for Markville Secondary Plan",
+    image: "/images/markville-rfp-cover.png",
+    tags: ["Design", "Urban Planning", "Hackathon Winner"],
+  },
+]
+
 export default function ProjectsPage() {
+  const [showAdditional, setShowAdditional] = useState(false)
+
+  const allProjects = showAdditional ? [...mainProjects, ...additionalProjects] : mainProjects
+
   return (
     <AnimatedPage>
       <div className="min-h-screen bg-black text-green-400">
@@ -69,11 +87,7 @@ export default function ProjectsPage() {
         />
 
         <main className="max-w-7xl mx-auto p-6" style={{ paddingTop: "120px" }}>
-          {" "}
-          {/* Changed to max-w-7xl */}
           <StaggeredContent delay={0}>
-            {" "}
-            {/* Changed from 200 */}
             <div className="mb-12">
               <h1 className="text-4xl font-bold mb-4">Projects</h1>
               <p className="text-gray-300 text-lg">
@@ -82,17 +96,13 @@ export default function ProjectsPage() {
             </div>
           </StaggeredContent>
           <StaggeredContent delay={100}>
-            {" "}
-            {/* Changed from 400 */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-              {" "}
-              {/* Changed lg:grid-cols-3 to lg:grid-cols-2 */}
-              {projects.map((project, index) => (
+              {allProjects.map((project, index) => (
                 <div
                   key={project.id}
                   className={`transition-all duration-700 ease-out`}
                   style={{
-                    animationDelay: `${300 + index * 100}ms`, // Changed from 600
+                    animationDelay: `${300 + index * 100}ms`,
                     opacity: 0,
                     transform: "translateY(20px)",
                     animation: "fadeInUp 0.7s ease-out forwards",
@@ -110,13 +120,10 @@ export default function ProjectsPage() {
                         </div>
                         <div className="p-6">
                           <div className="flex mb-4">
-                            {" "}
-                            {/* Flex container for image and text */}
                             <img
                               src={project.logo || "/placeholder.svg?height=80&width=80"}
                               alt={`${project.title} logo`}
                               className={`w-10 h-10 rounded-xl mr-4 flex-shrink-0 object-contain ${
-                                // Added object-contain here
                                 !project.logo || project.logo.includes("placeholder.svg") ? "hidden" : ""
                               }`}
                             />
@@ -146,9 +153,21 @@ export default function ProjectsPage() {
               ))}
             </div>
           </StaggeredContent>
+
+          {!showAdditional && (
+            <StaggeredContent delay={700}>
+              <div className="mt-12 text-center">
+                <Button
+                  onClick={() => setShowAdditional(true)}
+                  className="bg-green-600 hover:bg-green-700 text-white px-6 py-2"
+                >
+                  Load More Projects
+                </Button>
+              </div>
+            </StaggeredContent>
+          )}
+
           <StaggeredContent delay={700}>
-            {" "}
-            {/* Changed from 1000 */}
             <div className="mt-16 text-center">
               <h2 className="text-2xl font-bold mb-4">More Projects Coming Soon</h2>
               <p className="text-gray-300">I'm always working on new projects. Check back soon for updates!</p>
@@ -157,8 +176,6 @@ export default function ProjectsPage() {
         </main>
 
         <StaggeredContent delay={900}>
-          {" "}
-          {/* Changed from 1200 */}
           <Footer />
         </StaggeredContent>
       </div>
