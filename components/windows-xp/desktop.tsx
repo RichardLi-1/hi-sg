@@ -5,6 +5,7 @@ import { Taskbar } from "./taskbar"
 import { StartMenu } from "./start-menu"
 import { WindowXPWindow } from "./window"
 import { DesktopIcon } from "./desktop-icon"
+import { ClippyChatbot } from "./clippy-chatbot"
 
 export function WindowsXPDesktop() {
   const { windows, openWindow, isStartMenuOpen } = useWindowsXP()
@@ -111,6 +112,9 @@ export function WindowsXPDesktop() {
       {windows.map((window) => (
         <WindowXPWindow key={window.id} window={window} />
       ))}
+
+      {/* Clippy Chatbot */}
+      <ClippyChatbot />
 
       {/* Start Menu */}
       {isStartMenuOpen && <StartMenu />}
@@ -305,12 +309,8 @@ function WhyWindowsXPContent() {
           Recreating it here is both a nostalgic tribute and a demonstration of how those early experiences shaped my
           design sensibilities.
         </p>
-        <p>
-          To leave, open the start menu and log out or shut down.
-        </p>
-        <p>
-          I hope you enjoy your stay.
-        </p>
+        <p>To leave, open the start menu and log out or shut down.</p>
+        <p>I hope you enjoy your stay.</p>
       </div>
     </div>
   )
