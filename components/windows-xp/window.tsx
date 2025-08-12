@@ -137,12 +137,15 @@ export function WindowXPWindow({ window }: WindowXPWindowProps) {
       onClick={() => focusWindow(window.id)}
     >
       <div
-        className={`bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white p-1 flex items-center justify-between rounded-t-lg ${
+        className={`text-white p-1 flex items-center justify-between rounded-t-lg ${
           window.isMaximized ? "cursor-default" : "cursor-move"
         }`}
         style={{
-          background: "linear-gradient(to right, #0f5bff 0%, #1e6dff 25%, #3b82f6 50%, #1e6dff 75%, #0f5bff 100%)",
-          borderBottom: "1px solid #1e40af",
+          backgroundImage: "url('/images/xp-title-bar-gradient.png')",
+          backgroundSize: "100% 100%",
+          backgroundRepeat: "no-repeat",
+          borderBottom: "1px solid #1E3F8A",
+          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.3)",
         }}
         onMouseDown={window.isMaximized ? undefined : handleMouseDown}
       >

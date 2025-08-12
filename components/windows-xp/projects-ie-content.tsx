@@ -156,9 +156,9 @@ export function ProjectsIEContent() {
 
 function ProjectDetailContent({ project }: { project: any }) {
   return (
-    <div className="h-full bg-white p-4 overflow-y-auto">
+    <div className="h-full bg-white overflow-hidden">
       {/* IE Toolbar for project detail */}
-      <div className="bg-gradient-to-b from-gray-100 to-gray-200 border-b border-gray-300 p-2 mb-4">
+      <div className="bg-gradient-to-b from-gray-100 to-gray-200 border-b border-gray-300 p-2">
         <div className="flex items-center space-x-2 text-sm">
           <button className="px-2 py-1 hover:bg-gray-300 rounded">File</button>
           <button className="px-2 py-1 hover:bg-gray-300 rounded">Edit</button>
@@ -172,47 +172,24 @@ function ProjectDetailContent({ project }: { project: any }) {
         </div>
       </div>
 
-      {/* Project content */}
-      <div className="flex items-start space-x-4 mb-6">
-        {project.logo && !project.logo.includes("placeholder.svg") && (
-          <img
-            src={project.logo || "/placeholder.svg"}
-            alt={`${project.title} logo`}
-            className="w-16 h-16 rounded object-contain flex-shrink-0"
-          />
-        )}
-        <div>
-          <h1 className="text-2xl font-bold text-black mb-2">{project.title}</h1>
-          <p className="text-gray-600 mb-2">{project.year}</p>
-          <p className="text-gray-700">{project.description}</p>
-        </div>
-      </div>
-
-      {project.image && (
-        <div className="mb-6">
-          <img
-            src={project.image || "/placeholder.svg"}
-            alt={project.title}
-            className="w-full max-w-md rounded border border-gray-300"
-          />
-        </div>
-      )}
-
-      <div className="mb-4">
-        <h3 className="font-semibold text-black mb-2">Technologies:</h3>
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag: string) => (
-            <span key={tag} className="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded">
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="text-gray-600 text-sm">
-        <p>This project showcases my work in {project.tags.join(", ").toLowerCase()}.</p>
-        <p className="mt-2">For more details, please contact me directly.</p>
-      </div>
+      <iframe
+        src={`/projects/${project.id}`}
+        className="w-full border-0"
+        style={{ height: "calc(100% - 80px)" }}
+        title={`${project.title} Project Page`}
+        onLoad={(e) => {
+          // Ensure iframe content is loaded
+          const iframe = e.target as HTMLIFrameElement
+          try {
+            // Force reload if content is not loading
+            if (!iframe.contentDocument?.body?.innerHTML) {
+              iframe.src = iframe.src
+            }
+          } catch (error) {
+            console.log("Iframe loading normally")
+          }
+        }}
+      />
     </div>
   )
 }
