@@ -18,15 +18,19 @@ export default function ContactPage() {
               </h1>
               <p className="text-gray-400 text-lg mb-12 text-center">
                 Have a project in mind? Let's discuss how we can work together.
+                {" "}
               </p>
+              <p className="text-gray-400 text-lg mb-12 text-center">
+                Email: <a href="mailto:richardli0@outlook.com">richardli0@outlook.com</a>
+                {" "}
+                
+              </p>
+              <p className="text-gray-400 text-lg mb-12 text-center">Contact form coming soon</p>
             </div>
           </StaggeredContent>
 
-          <StaggeredContent delay={200}>
-            <div className="max-w-xl mx-auto">
-              <ContactForm />
-            </div>
-          </StaggeredContent>
+          
+
         </div>
       </main>
 
