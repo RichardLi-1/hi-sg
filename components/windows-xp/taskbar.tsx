@@ -1,5 +1,6 @@
 "use client"
 import { useWindowsXP } from "@/contexts/windows-xp-context"
+import { ProjectContentExtractor } from "@/components/windows-xp/project-content-extractor"
 
 export function Taskbar() {
   const { windows, focusWindow, toggleStartMenu, isStartMenuOpen, openWindow } = useWindowsXP()
@@ -9,9 +10,17 @@ export function Taskbar() {
   const shouldShrink = allWindows.length > maxWindowButtons
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-b from-blue-400 to-blue-600 border-t-2 border-blue-300 flex items-center px-1">
+    <div
+      className="absolute bottom-0 left-0 right-0 h-10 border-t-2 border-blue-300 flex items-center px-1"
+      style={{
+        backgroundImage: "url(/images/xp-taskbar-gradient.png)",
+        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <button
         onClick={toggleStartMenu}
+        data-start-button="true"
         className="h-16 w-32 relative overflow-hidden rounded-sm transition-none"
         style={{
           backgroundImage: `url(/images/start-button-states.png)`,
@@ -20,7 +29,9 @@ export function Taskbar() {
           backgroundRepeat: "no-repeat",
         }}
         onMouseDown={(e) => {
-          e.currentTarget.style.backgroundPosition = "0 -100%"
+          if (!isStartMenuOpen) {
+            e.currentTarget.style.backgroundPosition = "0 -100%"
+          }
         }}
         onMouseUp={(e) => {
           e.currentTarget.style.backgroundPosition = isStartMenuOpen ? "0 -200%" : "0 0%"
@@ -198,9 +209,7 @@ function ProjectDetailContent({ projectSlug, title }: { projectSlug: string; tit
         </div>
       </div>
 
-      <div className="h-full">
-        <iframe src={`/projects/${projectSlug}`} className="w-full h-full border-none" title={title} />
-      </div>
+      <ProjectContentExtractor projectSlug={projectSlug} />
     </div>
   )
 }

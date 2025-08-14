@@ -1,15 +1,36 @@
 "use client"
 import { useWindowsXP } from "@/contexts/windows-xp-context"
+import { useEffect, useRef } from "react"
 import type React from "react"
-
 import { ProjectsIEContent } from "./projects-ie-content"
+import { MailProgram } from "./mail-program" // Import MailProgram component
+import { WindowsMediaPlayer } from "./windows-media-player" // Import Windows Media Player component
+import { Notepad } from "./notepad" // Import Notepad component
 
 export function StartMenu() {
   const { openWindow, toggleStartMenu, toggleXPMode } = useWindowsXP()
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        // Check if the click is not on the start button
+        const startButton = document.querySelector("[data-start-button]")
+        if (startButton && !startButton.contains(event.target as Node)) {
+          toggleStartMenu()
+        }
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [toggleStartMenu])
 
   const handleMenuClick = (action: () => void) => {
     action()
-    toggleStartMenu()
+    // Don't automatically close the menu - let user click outside or click start button again
   }
 
   const handleLogOff = () => {
@@ -31,7 +52,10 @@ export function StartMenu() {
   }
 
   return (
-    <div className="absolute bottom-10 left-0 w-96 h-96 bg-gradient-to-b from-blue-100 to-blue-200 border-2 border-blue-400 rounded-tr-lg shadow-2xl">
+    <div
+      ref={menuRef}
+      className="absolute bottom-10 left-0 w-96 h-96 bg-gradient-to-b from-blue-100 to-blue-200 border-2 border-blue-400 rounded-tr-lg shadow-2xl"
+    >
       {/* User Header */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-3 rounded-tr-lg">
         <div className="flex items-center space-x-3">
@@ -51,7 +75,7 @@ export function StartMenu() {
             onClick={() =>
               handleMenuClick(() =>
                 openWindow({
-                  title: "Projects - Internet Explorer",
+                  title: "Work - Internet Explorer",
                   content: <ProjectsIEContent />,
                   isMinimized: false,
                   isMaximized: false,
@@ -61,10 +85,55 @@ export function StartMenu() {
               )
             }
           />
-          <StartMenuItem icon="📧" text="E-mail" />
+          <StartMenuItem
+            icon="📧"
+            text="E-mail"
+            onClick={() =>
+              handleMenuClick(() =>
+                openWindow({
+                  title: "New Message - Outlook Express",
+                  content: <MailProgram />,
+                  isMinimized: false,
+                  isMaximized: false,
+                  position: { x: 150, y: 150 },
+                  size: { width: 600, height: 500 },
+                }),
+              )
+            }
+          />
           <StartMenuItem icon="💬" text="MSN Messenger" />
-          <StartMenuItem icon="🎵" text="Windows Media Player" />
-          <StartMenuItem icon="📝" text="Notepad" />
+          <StartMenuItem
+            icon="🎵"
+            text="Windows Media Player"
+            onClick={() =>
+              handleMenuClick(() =>
+                openWindow({
+                  title: "Windows Media Player",
+                  content: <WindowsMediaPlayer />,
+                  isMinimized: false,
+                  isMaximized: false,
+                  position: { x: 100, y: 100 },
+                  size: { width: 700, height: 550 },
+                }),
+              )
+            }
+          />
+          <StartMenuItem
+            icon="📝"
+            text="Notepad"
+            onClick={() =>
+              handleMenuClick(() =>
+                openWindow({
+                  title: "Untitled - Notepad",
+                  content: <Notepad />,
+                  isMinimized: false,
+                  isMaximized: false,
+                  position: { x: 250, y: 150 },
+                  size: { width: 600, height: 400 },
+                }),
+              )
+            }
+          />
           <StartMenuItem icon="🎮" text="Games" />
         </div>
 

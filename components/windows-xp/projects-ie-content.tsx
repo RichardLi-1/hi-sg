@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import { useWindowsXP } from "@/contexts/windows-xp-context"
+import { ProjectContentRenderer } from "./project-content-renderer" // Import new content renderer
 
 const mainProjects = [
   {
@@ -100,9 +101,9 @@ export function ProjectsIEContent() {
 
       {/* Content */}
       <div className="p-4 overflow-y-auto h-full bg-white">
-        <h1 className="text-2xl font-bold mb-4 text-black">Projects</h1>
+        <h1 className="text-2xl font-bold mb-4 text-black">Work</h1>
         <p className="text-gray-600 mb-6">
-          A collection of projects I've built and work I've done, from mobile games to non-profit initiatives.
+          A collection of work I've done and projects I've built, from mobile games to non-profit initiatives.
         </p>
 
         <div className="grid grid-cols-1 gap-4">
@@ -143,9 +144,9 @@ export function ProjectsIEContent() {
           <div className="mt-6 text-center">
             <button
               onClick={() => setShowAdditional(true)}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="px-4 py-2 bg-gradient-to-b from-gray-200 to-gray-400 hover:from-gray-100 hover:to-gray-300 border border-gray-500 text-black rounded-sm"
             >
-              Load More Projects
+              Load More Work
             </button>
           </div>
         )}
@@ -172,24 +173,9 @@ function ProjectDetailContent({ project }: { project: any }) {
         </div>
       </div>
 
-      <iframe
-        src={`/projects/${project.id}`}
-        className="w-full border-0"
-        style={{ height: "calc(100% - 80px)" }}
-        title={`${project.title} Project Page`}
-        onLoad={(e) => {
-          // Ensure iframe content is loaded
-          const iframe = e.target as HTMLIFrameElement
-          try {
-            // Force reload if content is not loading
-            if (!iframe.contentDocument?.body?.innerHTML) {
-              iframe.src = iframe.src
-            }
-          } catch (error) {
-            console.log("Iframe loading normally")
-          }
-        }}
-      />
+      <div className="h-full" style={{ height: "calc(100% - 80px)" }}>
+        <ProjectContentRenderer projectId={project.id} />
+      </div>
     </div>
   )
 }

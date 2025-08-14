@@ -5,6 +5,8 @@ import { Taskbar } from "./taskbar"
 import { StartMenu } from "./start-menu"
 import { WindowXPWindow } from "./window"
 import { DesktopIcon } from "./desktop-icon"
+import { ClippyChatbot } from "./clippy-chatbot"
+import { MailProgram } from "./mail-program"
 
 export function WindowsXPDesktop() {
   const { windows, openWindow, isStartMenuOpen } = useWindowsXP()
@@ -89,6 +91,21 @@ export function WindowsXPDesktop() {
             })
           }
         />
+        {/* Added Contact Me desktop icon */}
+        <DesktopIcon
+          icon="📧"
+          label="Contact Me"
+          onDoubleClick={() =>
+            openWindow({
+              title: "Contact Me - Outlook Express",
+              content: <MailProgram />,
+              isMinimized: false,
+              isMaximized: false,
+              position: { x: 300, y: 100 },
+              size: { width: 700, height: 500 },
+            })
+          }
+        />
         {showWhyXP && (
           <DesktopIcon
             icon="❓"
@@ -111,6 +128,9 @@ export function WindowsXPDesktop() {
       {windows.map((window) => (
         <WindowXPWindow key={window.id} window={window} />
       ))}
+
+      {/* Clippy Chatbot */}
+      <ClippyChatbot />
 
       {/* Start Menu */}
       {isStartMenuOpen && <StartMenu />}
@@ -143,23 +163,44 @@ function AboutMeContent() {
         </ul>
 
         <h3 className="font-bold mt-4">Contact:</h3>
-        <p>
-          Email:{" "}
-          <a href="mailto:richardli0@outlook.com" className="text-blue-600 underline hover:text-blue-800">
-            richardli0@outlook.com
-          </a>
-        </p>
-        <p>
-          LinkedIn:{" "}
-          <a
-            href="https://www.linkedin.com/in/richardli0"
-            className="text-blue-600 underline hover:text-blue-800"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            linkedin.com/in/richardli0
-          </a>
-        </p>
+        <div className="space-y-2">
+          <p className="flex items-center gap-2">
+            <span className="text-lg">📧</span>
+            Email:{" "}
+            <a
+              href="mailto:richardli0@outlook.com"
+              className="text-blue-600 underline hover:text-blue-800 flex items-center gap-1"
+            >
+              richardli0@outlook.com
+            </a>
+          </p>
+          <p className="flex items-center gap-2">
+            <span className="text-lg">💼</span>
+            LinkedIn:{" "}
+            <a
+              href="https://www.linkedin.com/in/richardli0"
+              className="text-blue-600 underline hover:text-blue-800 flex items-center gap-1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              linkedin.com/in/richardli0
+              <span className="text-xs">🔗</span>
+            </a>
+          </p>
+          <p className="flex items-center gap-2">
+            <span className="text-lg">💻</span>
+            GitHub:{" "}
+            <a
+              href="https://github.com/RichardLi-1"
+              className="text-blue-600 underline hover:text-blue-800 flex items-center gap-1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/RichardLi-1
+              <span className="text-xs">🔗</span>
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   )
@@ -305,12 +346,8 @@ function WhyWindowsXPContent() {
           Recreating it here is both a nostalgic tribute and a demonstration of how those early experiences shaped my
           design sensibilities.
         </p>
-        <p>
-          To leave, open the start menu and log out or shut down.
-        </p>
-        <p>
-          I hope you enjoy your stay.
-        </p>
+        <p>To leave, open the start menu and log out or shut down.</p>
+        <p>I hope you enjoy your stay.</p>
       </div>
     </div>
   )
