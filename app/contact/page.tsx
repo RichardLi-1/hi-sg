@@ -1,10 +1,20 @@
+"use client"
+
+import { useState } from "react"
 import { AnimatedPage } from "@/components/animated-page"
 import { AnimatedHeader } from "@/components/animated-header"
 import { StaggeredContent } from "@/components/staggered-content"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
+import { ContactLoadingScreen } from "@/components/contact-loading-screen"
 
 export default function ContactPage() {
+  const [showLoading, setShowLoading] = useState(true)
+
+  if (showLoading) {
+    return <ContactLoadingScreen onComplete={() => setShowLoading(false)} />
+  }
+
   return (
     <AnimatedPage>
       <AnimatedHeader backHref="/" backText="Home" currentPage="/contact" />
@@ -18,19 +28,11 @@ export default function ContactPage() {
               </h1>
               <p className="text-gray-400 text-lg mb-12 text-center">
                 Have a project in mind? Let's discuss how we can work together.
-                {" "}
               </p>
-              <p className="text-gray-400 text-lg mb-12 text-center">
-                Email: <a href="mailto:richardli0@outlook.com">richardli0@outlook.com</a>
-                {" "}
-                
-              </p>
-              <p className="text-gray-400 text-lg mb-12 text-center">Contact form coming soon</p>
+
+              <ContactForm />
             </div>
           </StaggeredContent>
-
-          
-
         </div>
       </main>
 
