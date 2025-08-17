@@ -256,7 +256,7 @@ export default function PersonalWebsite() {
             {" "}
             {/* Changed from 800 */}
             <section className="space-y-4">
-              <h2 className="text-xl">Some <a href="/projects" className="underline">projects</a> I made...</h2>
+              <h2 className="text-xl">Some <a href="/projects" className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110">projects</a> I made...</h2>
               <div className="text-gray-300 ml-4">
               <li>
                 <a
