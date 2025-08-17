@@ -158,7 +158,7 @@ export default function PersonalWebsite() {
                   </span>
                   .
                 </p>
-                <p>I'm interested in public transportation, AI, design, and front-end development.</p>
+                <p>I'm interested in public transportation, AI, design, PM, and front-end development.</p>
               </div>
             </section>
           </StaggeredContent>
@@ -203,7 +203,9 @@ export default function PersonalWebsite() {
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>interning at a YC-backed SaaS startup, analyzing ai trends and working on product design</span>
+                  <span>
+                    seeking winter 2026 internships!
+                  </span>
                 </li>
               </ul>
             </section>
@@ -216,6 +218,10 @@ export default function PersonalWebsite() {
             <section className="space-y-4">
               <h2 className="text-xl">Previously I...</h2>
               <ul className="space-y-2 text-gray-300 ml-4">
+              <li className="flex items-start">
+                  <span className="mr-2">•</span>
+                  <span>interned at a YC-backed SaaS startup, analyzing ai trends and working on product design</span>
+                </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
                   <span>
@@ -240,8 +246,30 @@ export default function PersonalWebsite() {
                   <span className="mr-2">•</span>
                   <span>tutored a second year university student Python and CS principles</span>
                 </li>
+                
+              </ul>
+            </section>
+          </StaggeredContent>
+
+          {/* Projects */}
+          <StaggeredContent delay={500}>
+            {" "}
+            {/* Changed from 800 */}
+            <section className="space-y-4">
+              <h2 className="text-xl">Some <a href="/projects" className="underline">projects</a> I made...</h2>
+              <div className="text-gray-300 ml-4">
+              <li>
+                <a
+                  href="https://www.futureforward.info/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-green-300 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
+                >
+                  future forward
+                </a>
+                {" - non-profit focusing on helping students discover their vocations"}
+                </li>
                 <li>
-                  <span className="mr-2">•</span>
                   <span>
                     conceptualized and designed{" "}
                     <img
@@ -258,27 +286,6 @@ export default function PersonalWebsite() {
                     , a Windows Vista-inspired inkball game published on the App Store
                   </span>
                 </li>
-              </ul>
-            </section>
-          </StaggeredContent>
-
-          {/* Projects */}
-          <StaggeredContent delay={500}>
-            {" "}
-            {/* Changed from 800 */}
-            <section className="space-y-4">
-              <h2 className="text-xl">Currently working on...</h2>
-              <div className="text-gray-300 ml-4">
-                <span className="mr-2">•</span>
-                <a
-                  href="https://www.futureforward.info/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-green-300 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
-                >
-                  future forward
-                </a>
-                {" - non-profit focusing on helping students discover their vocations"}
               </div>
             </section>
           </StaggeredContent>
