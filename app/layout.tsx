@@ -6,12 +6,21 @@ import { LayoutClient } from "./layout-content"
 
 const inter = Inter({ subsets: ["latin"] })
 
+
 export const metadata: Metadata = {
   title: "Richard Li",
   description: "Personal website and chatbot for Richard Li",
   openGraph: {
     title: "Richard Li",
     description: "Personal website and chatbot for Richard Li",
+	icons: {
+		icon: "/favicon.svg",       // path to your favicon in /public
+		apple: "/favicon.ico",      // optional: for Apple devices
+		other: {
+			rel: "shortcut icon",
+			url: "/favicon.ico",
+		},
+  	},
     images: [
       {
         url: "/images/website-thumbnail.png",
