@@ -15,17 +15,17 @@ export function GifLoadingScreen({ onComplete }: GifLoadingScreenProps) {
     const pageLoadTimer = setTimeout(() => {
       console.log("[v0] Page content loading started")
       onComplete()
-    }, 1590) // Start page content loading 100ms before panel lifts
+    }, 1640) // Start page content loading 100ms before panel lifts
 
     const panelLiftTimer = setTimeout(() => {
       console.log("[v0] Panel lifting animation started")
       setIsLifting(true)
-    }, 1280)
+    }, 1330)
 
     const hideTimer = setTimeout(() => {
       console.log("[v0] Loading screen hidden")
       setIsVisible(false)
-    }, 2330) // Extended to 1330 + 1000ms for longer animation
+    }, 2380) // Extended to 1330 + 1000ms for longer animation
 
     return () => {
       clearTimeout(pageLoadTimer)

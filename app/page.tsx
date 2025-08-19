@@ -312,10 +312,10 @@ export default function PersonalWebsite() {
             {" "}
             {/* Changed from 800 */}
             <section className="space-y-4">
-              <h2 className="text-xl">Looking ahead, I'd like to ...</h2>
+              <h2 className="text-xl">Looking ahead, I'd like to...</h2>
               <div className="text-gray-300 ml-4">
               <li>
-              Work at a large coorporation. I'd love to learn about best practices in software engineering and build scalable systems that impact millions of users
+              learn about best practices in software engineering and build scalable systems that impact millions of users
               </li>
               </div>
             </section>
@@ -401,7 +401,7 @@ export default function PersonalWebsite() {
                     <Input
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
-                      placeholder="Ask about specific roles, like 'What did you do at CoCo?'"
+                      placeholder="Ask anything about me!"
                       className="flex-1 bg-gray-800 border-gray-600 text-green-400 placeholder-gray-500"
                       disabled={isLoading}
                     />
@@ -415,7 +415,6 @@ export default function PersonalWebsite() {
           </StaggeredContent>
 
           <StaggeredContent delay={900}>
-            {" "}
             {/* Changed from 1200 */}
             <br />
             <span>
