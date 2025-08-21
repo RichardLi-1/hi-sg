@@ -23,7 +23,7 @@ export const mainProjects = [
     description: "Non-profit focusing on helping students discover their vocations",
     image: "images/IMG_7745.jpeg",
     logo: "/images/future-forward-logo.png",
-    tags: ["Non-profit", "Web Development", "Community"],
+    tags: ["Non-profit", "Project Management", "Community"],
   },
   {
     id: "yrhacks",

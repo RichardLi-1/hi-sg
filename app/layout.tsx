@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "Personal website and chatbot for Richard Li",
 	icons: {
 		icon: "/favicon.svg",       // path to your favicon in /public
-		apple: "/favicon.ico",      // optional: for Apple devices
+		apple: "/favicon.svg",      // optional: for Apple devices
 		other: {
 			rel: "shortcut icon",
 			url: "/favicon.ico",
