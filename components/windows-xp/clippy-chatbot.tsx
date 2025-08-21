@@ -127,10 +127,10 @@ export function ClippyChatbot() {
           onClick={() => setIsOpen(true)}
           title="Hi! I'm Clippy. Click me for help!"
         >
-          <img src="/images/clippy.png" alt="Clippy" className="w-16 h-16" />
+          <img src="/images/clippynew.png" alt="Clippy" className="w-16 h-16" />
 
           {/* Speech Bubble */}
-          <div className="absolute -top-16 -left-20 bg-yellow-100 border-2 border-gray-800 rounded-lg p-2 shadow-lg">
+          <div className="absolute -top-16 -left-40 bg-yellow-100 border-2 border-gray-800 rounded-lg p-2 shadow-lg">
             <div className="text-xs text-black font-bold whitespace-nowrap">Hi! Need help learning about Richard?</div>
             {/* Speech bubble tail */}
             <div className="absolute top-full left-8 w-0 h-0 border-l-4 border-r-4 border-t-8 border-l-transparent border-r-transparent border-t-gray-800"></div>
@@ -154,7 +154,7 @@ export function ClippyChatbot() {
           }}
         >
           <div className="flex items-center space-x-2">
-            <img src="/images/clippy.png" alt="Clippy" className="w-4 h-4" />
+            <img src="/images/clippynew.png" alt="Clippy" className="w-4 h-4" />
             <span className="text-sm font-bold">Office Assistant</span>
           </div>
           <div className="flex space-x-1">
@@ -177,7 +177,7 @@ export function ClippyChatbot() {
           <div className="p-3 h-full flex flex-col">
             {/* Clippy Character */}
             <div className="flex items-start space-x-2 mb-3">
-              <img src="/images/clippy.png" alt="Clippy" className="w-8 h-8 flex-shrink-0" />
+              <img src="/images/clippynew.png" alt="Clippy" className="w-8 h-8 flex-shrink-0" />
               <div className="bg-yellow-100 border border-gray-400 rounded p-2 text-xs text-black">
                 {messages.length === 0
                   ? "Hi! I'm Clippy, your office assistant. I can help you learn about Richard Li. What would you like to know?"

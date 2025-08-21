@@ -160,7 +160,7 @@ export default function PersonalWebsite() {
                   </span>
                   .
                 </p>
-                <p>I'm interested in public transportation, AI, PM, design, PM, and development.</p>
+                <p>I'm interested in public transportation, AI, PM, design, and development.</p>
               </div>
             </section>
           </StaggeredContent>
@@ -318,7 +318,11 @@ export default function PersonalWebsite() {
               learn about best practices in software engineering and build scalable systems that impact millions of users
               </li>
 			  <li>
-              contribute to the advancement of the North American public transit industry
+              contribute to the advancement of the North American public transit industry <img
+                      alt=""
+                      className="inline h-4 mr-1"
+                      src="images/ttcsubwayiconwhite.png"
+                    />
               </li>
 			  <li>
               work in a role combining my passions for design, development, and project management
