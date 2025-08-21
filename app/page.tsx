@@ -314,6 +314,7 @@ export default function PersonalWebsite() {
             <section className="space-y-4">
               <h2 className="text-xl">Looking ahead, I'd like to...</h2>
               <div className="text-gray-300 ml-4">
+              <ul className="space-y-2 ml-4 list-disc">
               <li>
               learn about best practices in software engineering and build scalable systems that impact millions of users
               </li>
@@ -327,6 +328,7 @@ export default function PersonalWebsite() {
 			  <li>
               work in a role combining my passions for design, development, and project management
               </li>
+              </ul>
               </div>
             </section>
           </StaggeredContent>
