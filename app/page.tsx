@@ -326,7 +326,7 @@ export default function PersonalWebsite() {
                     />
               </li>
 			  <li>
-              explore design engineering and work in a role combining my passions for design, development, and project management
+              explore design engineering and work in a role combining design, development, and project management
               </li>
               </ul>
               </div>
