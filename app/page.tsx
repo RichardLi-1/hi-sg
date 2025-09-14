@@ -177,7 +177,7 @@ export default function PersonalWebsite() {
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
                   <span>
-                    an incoming{" "}
+                    studying{" "}
                     <a
                       href="https://uwaterloo.ca/systems-design-engineering/"
                       target="_blank"
@@ -187,7 +187,7 @@ export default function PersonalWebsite() {
                       {" "}
                       systems design engineering{" "}
                     </a>{" "}
-                    student at the{" "}
+                    at the{" "}
                     <img
                       alt="University of Waterloo"
                       className="inline w-4 h-4 mr-1"

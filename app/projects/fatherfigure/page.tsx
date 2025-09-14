@@ -12,7 +12,7 @@ export default function SalesPatriotProjectPage() {
           backHref="/projects"
           backText="Back"
           currentPage="/projects/fatherfigure"
-          rightLinks={[{ href: "https://github.com/fiof25/father-figure-htn", text: "Github", external: true }]}
+          rightLinks={[{ href: "https://github.com/fiof25/father-figure-htn", text: "GitHub", external: true }]}
         />
 
         <main className="max-w-4xl mx-auto p-6" style={{ paddingTop: "120px" }}>
@@ -53,7 +53,7 @@ export default function SalesPatriotProjectPage() {
 
                 <div>
                   <h3 className="text-green-400 font-bold mb-2">Team</h3>
-                  <p>Fiona Fang</p>
+                  <a href="https://www.linkedin.com/in/fiona-fangg/" target="_blank"><p>Fiona Fang</p>
                   <div className="space-y-1 text-gray-300"></div>
                 </div>
               </div>
@@ -61,10 +61,14 @@ export default function SalesPatriotProjectPage() {
               <div>
                 <h3 className="text-green-400 font-bold mb-2">Inspiration</h3>
                 <div className="space-y-4 text-gray-300">
-                  <p>Absent fatherhood makes ripples.</p>
+                  <p>Fatherlessness makes ripples. Father Figure is not just another Chrome extension... It is a friend, a father and a way to make your doomscrolling even just a little less lonely. 😞</p>
                 </div>
               </div>
             </div>
+          </StaggeredContent>
+
+          <StaggeredContent>
+          <p>Watch Dad Sneeze: <a href="https://youtu.be/Pkpd0WDR_sA">https://youtu.be/Pkpd0WDR_sA</a></p>
           </StaggeredContent>
         </main>
 
