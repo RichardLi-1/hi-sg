@@ -138,7 +138,7 @@ export default function PersonalWebsite() {
         {/* Header */}
         <AnimatedHeader isHomepage={true} currentPage="/" />
 
-        <main className="max-w-4xl mx-auto p-6 space-y-8" style={{ paddingTop: "120px" }}>
+        <main className="max-w-4xl mx-auto p-6 space-y-8 pt-[60px] sm:pt-[120px]">
           {/* Introduction */}
           <StaggeredContent delay={0}>
             {" "}
