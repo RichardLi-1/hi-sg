@@ -110,12 +110,19 @@ export default function ProjectsPage() {
 
           {!showAdditional && (
             <StaggeredContent delay={700}>
-              <div className="mt-12 text-center">
+              <div className="mt-12 text-center flex justify-center gap-4">
                 <Button
                   onClick={() => setShowAdditional(true)}
                   className="bg-green-600 hover:bg-green-700 text-white px-6 py-2"
                 >
                   Load More Projects
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-green-600 text-green-400 hover:bg-green-600 hover:text-white px-6 py-2 bg-transparent"
+                >
+                  <Link href="https://drive.google.com/file/d/1ZvCvLqXS09van0ZQ4KX2NePUs8CneLPx/view?usp=sharing">Resume</Link>
                 </Button>
               </div>
             </StaggeredContent>

@@ -20,6 +20,8 @@ Interests: Public transit, AI, design, front-end dev, uiux, ms windows, ios
 
 WORK:
 
+Future work: SaFuture Inc: (Jan to Apr 2026): Will work on GIS technologies, very excited
+
 Intern at SalesPatriot (YC W25) (Jul 2025–Present): Analyze AI trends, design product features, research emerging AI tech, aid strategy
 
 Mochi Doh – Food Service (Aug 2024–Present): Make mochi donuts, prep banh mi, drinks, catering, weekend delivery

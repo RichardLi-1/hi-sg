@@ -206,8 +206,48 @@ export default function PersonalWebsite() {
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
                   <span>
-                    seeking winter 2026 internships!
+                    developing for <img
+                      alt=""
+                      className="inline w-4 h-4 mr-1"
+                      src="https://richardli-1.github.io/Personal-Website/formulatech%20hacks%20logo.jpeg"
+                    />
+                    
+                    <a href="https://www.instagram.com/formulatech.hacks/" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110">formulatech hacks</a>
                   </span>
+                </li>
+                
+
+<li className="flex items-start">
+                  <span className="mr-2">•</span>
+                  <span>
+                    creating a {" "}
+                    <img
+                      alt=""
+                      className="inline w-4 h-4 mr-1"
+                      src="/images/design-mode/pngtree-goose-flat-icon-png-image_9148185.png"
+                    />
+                    <a
+                      href="https://uwaterloo.ca/systems-design-engineering/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
+                    >
+                      {" "}
+                      class profile{" "}
+                    </a>{" "}
+                    {" "}
+                    
+                    
+                      for the syde class of 2030
+                  </span>
+                </li>
+
+                
+
+                <li className="flex items-start">
+                  <span className="mr-2">•</span>
+                  open to fall 2026 internships!
+
                 </li>
               </ul>
             </section>
