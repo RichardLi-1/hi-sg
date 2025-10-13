@@ -209,7 +209,7 @@ export default function PersonalWebsite() {
                     developing for <img
                       alt=""
                       className="inline w-4 h-4 mr-1"
-                      src="https://richardli-1.github.io/Personal-Website/formulatech%20hacks%20logo.jpeg"
+                      src="https://richardli-1.github.io/Old-Personal-Website/formulatech%20hacks%20logo.jpeg"
                     />
                     
                     <a href="https://www.instagram.com/formulatech.hacks/" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110">formulatech hacks</a>
@@ -470,7 +470,7 @@ export default function PersonalWebsite() {
             {/* Changed from 1200 */}
             <br />
             <span>
-              I'd love to hear from you! Want to hire me? or simply wanna chat? Feel free to reach out by{" "}
+              I'd love to hear from you! Want to hire me? Or wanna chat? Feel free to reach out by{" "}
               <a
                 href="mailto:richardli0@outlook.com"
                 className="text-stone-400 underline hover:text-stone-100 inline-block transform transition-transform duration-200 hover:scale-110"

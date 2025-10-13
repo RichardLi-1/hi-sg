@@ -22,7 +22,7 @@ export const mainProjects = [
     title: "SalesPatriot (YC W25)",
     year: "2025",
     description: "Completing an end-to-end UX for defense manufacturers",
-    image: "https://richardli-1.github.io/Personal-Website/salespatriott.png?height=400&width=600",
+    image: "https://richardli-1.github.io/Old-Personal-Website/salespatriott.png?height=400&width=600",
     tags: ["Internship", "UI/UX", "AI"],
   },
   {
