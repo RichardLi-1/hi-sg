@@ -122,7 +122,7 @@ export default function ProjectsPage() {
                   variant="outline"
                   className="border-green-600 text-green-400 hover:bg-green-600 hover:text-white px-6 py-2 bg-transparent"
                 >
-                  <Link href="https://drive.google.com/file/d/1ZvCvLqXS09van0ZQ4KX2NePUs8CneLPx/view?usp=sharing">Resume</Link>
+                  <Link href="https://drive.google.com/file/d/1ZvCvLqXS09van0ZQ4KX2NePUs8CneLPx/view?usp=sharing" target="_blank">Resume</Link>
                 </Button>
               </div>
             </StaggeredContent>
