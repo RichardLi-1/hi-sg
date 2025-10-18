@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import type React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -9,7 +9,7 @@ import { Send } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { AnimatedPage } from "@/components/animated-page"
 import { StaggeredContent } from "@/components/staggered-content"
-import { AnimatedHeader } from "@/components/animated-header"
+import { ResponsiveHeader } from "@/components/responsiveheader"
 import { mainProjects } from "@/components/mainProjects"
 import ReactMarkdown from "react-markdown"
 
@@ -24,6 +24,19 @@ export default function PersonalWebsite() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    // Optional: skip bots to avoid spam
+    if (/bot|crawler|spider/i.test(navigator.userAgent)) return;
+
+    fetch("https://discord.com/api/webhooks/1429248057027067925/Bmd9BlC5bE5QsPlskHhxiLjNjii9lVZ-C23wOmKF5tXLwugP_KRGyniYnIMTbZKtOLdX", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        content: `👀 New visitor on ${window.location.href}\n🕒 ${new Date().toLocaleString()}`
+      })
+    })
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -136,7 +149,8 @@ export default function PersonalWebsite() {
     <AnimatedPage>
       <div className="min-h-screen bg-black text-[#4BDE7F]">
         {/* Header */}
-        <AnimatedHeader isHomepage={true} currentPage="/" />
+        
+        <ResponsiveHeader isHomepage={true} currentPage="/" />
 
         <main className="max-w-4xl mx-auto p-6 space-y-8 pt-[60px] sm:pt-[120px]">
           {/* Introduction */}
