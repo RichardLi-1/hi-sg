@@ -67,7 +67,7 @@ export default function ProjectsPage() {
     <Link href={`/projects/${project.id}`}>
       <Card className="transition-all duration-300 cursor-pointer group border-background bg-background -mb-2">
         <CardContent className="p-0">
-          <div className="aspect-video w-full bg-gray-800 overflow-hidden transition-shadow duration-300 group-hover:shadow-[0_0_30px_var(--glow-color)]">
+          <div className="aspect-video w-full bg-gray-800 overflow-hidden transition-shadow duration-300 group-hover:shadow-[0_0px_40px_0px_var(--glow-color)]">
             <img
               src={project.image || "/placeholder.svg"}
               alt={project.title}

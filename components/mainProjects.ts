@@ -17,7 +17,7 @@ export const mainProjects = [
     image: "https://raw.githubusercontent.com/fiof25/father-figure-htn/refs/heads/main/assets/fatherfigurebanner.png",
     logo: "https://raw.githubusercontent.com/fiof25/father-figure-htn/refs/heads/main/assets/Logo.png",
     tags: ["Chrome Extension", "JS", "Utilities"],
-    colors: "#4C839E"
+    colors: "#673435"
   },
   {
     id: "salespatriot",
