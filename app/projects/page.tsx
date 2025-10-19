@@ -44,7 +44,7 @@ export default function ProjectsPage() {
           <StaggeredContent delay={0}>
             <div className="mb-12">
               <h1 className="text-4xl font-bold mb-4">Work</h1>
-              <p className="text-gray-300 text-lg">
+              <p className="text-gray-300 text-lg -mb-4">
                 A collection of work and projects, from mobile games to non-profit initiatives.
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
                   }}
                 >
                   <Link href={`/projects/${project.id}`}>
-                    <Card className="transition-all duration-300 cursor-pointer group border-background bg-background mb-2">
+                    <Card className="transition-all duration-300 cursor-pointer group border-background bg-background -mb-2">
                       <CardContent className="p-0">
                         <div className="aspect-video w-full bg-gray-800 overflow-hidden transition-shadow duration-300 group-hover:shadow-[0_0_30px_rgba(34,197,94,0.6)]">
                           <img
