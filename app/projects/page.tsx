@@ -52,51 +52,54 @@ export default function ProjectsPage() {
           <StaggeredContent delay={100}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
               {allProjects.map((project, index) => (
-                <div
-                  key={project.id}
-                  className={`transition-all duration-700 ease-out`}
-                  style={{
-                    animationDelay: `${300 + index * 100}ms`,
-                    opacity: 0,
-                    transform: "translateY(20px)",
-                    animation: "fadeInUp 0.7s ease-out forwards",
-                  }}
-                >
-                  <Link href={`/projects/${project.id}`}>
-                    <Card className="transition-all duration-300 cursor-pointer group border-background bg-background -mb-2">
-                      <CardContent className="p-0">
-                        <div className="aspect-video w-full bg-gray-800 overflow-hidden transition-shadow duration-300 group-hover:shadow-[0_0_30px_rgba(34,197,94,0.6)]">
-                          <img
-                            src={project.image || "/placeholder.svg"}
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-300"
-                          />
-                        </div>
-                        <div className="p-6 mx-0 px-2.5">
-                          <div className="flex -mt-2">
-                            <img
-                              src={project.logo || "/placeholder.svg?height=80&width=80"}
-                              alt={`${project.title} logo`}
-                              className={`w-10 h-10 rounded-xl mr-4 flex-shrink-0 object-contain ${
-                                !project.logo || project.logo.includes("placeholder.svg") ? "hidden" : ""
-                              }`}
-                            />
-                            <div className="flex-grow">
-                              <div className="flex items-center justify-between mb-2">
-                                <h3 className="text-xl font-bold text-white -mb-4 -mt-4 group-hover:underline transition-all duration-300">
-                                  {project.title}
-                                </h3>
-                                <span className="text-gray-400 text-sm">{project.year}</span>
-                              </div>
-                              <p className="text-gray-300 text-sm leading-relaxed -mt-1 mx-[]">{project.description}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
+  <div
+    key={project.id}
+    className="transition-all duration-700 ease-out"
+    style={{
+      animationDelay: `${300 + index * 100}ms`,
+      opacity: 0,
+      transform: "translateY(20px)",
+      animation: "fadeInUp 0.7s ease-out forwards",
+      // define a variable unique to this card
+      "--glow-color": project.colors || "#22c55e99",
+    }}
+  >
+    <Link href={`/projects/${project.id}`}>
+      <Card className="transition-all duration-300 cursor-pointer group border-background bg-background -mb-2">
+        <CardContent className="p-0">
+          <div className="aspect-video w-full bg-gray-800 overflow-hidden transition-shadow duration-300 group-hover:shadow-[0_0_30px_var(--glow-color)]">
+            <img
+              src={project.image || "/placeholder.svg"}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-300"
+            />
+          </div>
+          <div className="p-6 mx-0 px-2.5">
+            <div className="flex -mt-2">
+              <img
+                src={project.logo || "/placeholder.svg?height=80&width=80"}
+                alt={`${project.title} logo`}
+                className={`w-10 h-10 rounded-xl mr-4 flex-shrink-0 object-contain ${
+                  !project.logo || project.logo.includes("placeholder.svg") ? "hidden" : ""
+                }`}
+              />
+              <div className="flex-grow">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-white -mb-4 -mt-4 group-hover:underline transition-all duration-300">
+                    {project.title}
+                  </h3>
+                  <span className="text-gray-400 text-sm">{project.year}</span>
                 </div>
-              ))}
+                <p className="text-gray-300 text-sm leading-relaxed -mt-1 mx-[]">{project.description}</p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
+  </div>
+))}
+
             </div>
           </StaggeredContent>
 

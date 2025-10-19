@@ -7,6 +7,7 @@ export const mainProjects = [
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OFGQDkrP2BvNmhLieOxExwEZBsCGcq.png",
     logo: "/images/boink-logo.webp",
     tags: ["iOS", "Swift", "Game Development"],
+    colors: "#417193"
   },
   {
     id: "fatherfigure",
@@ -16,6 +17,7 @@ export const mainProjects = [
     image: "https://raw.githubusercontent.com/fiof25/father-figure-htn/refs/heads/main/assets/fatherfigurebanner.png",
     logo: "https://raw.githubusercontent.com/fiof25/father-figure-htn/refs/heads/main/assets/Logo.png",
     tags: ["Chrome Extension", "JS", "Utilities"],
+    colors: "#4C839E"
   },
   {
     id: "salespatriot",
@@ -24,6 +26,7 @@ export const mainProjects = [
     description: "Completing an end-to-end UX for defense manufacturers",
     image: "https://richardli-1.github.io/Old-Personal-Website/salespatriott.png?height=400&width=600",
     tags: ["Internship", "UI/UX", "AI"],
+    colors: "#352F0C"
   },
   {
     id: "futureforward",
@@ -33,6 +36,7 @@ export const mainProjects = [
     image: "images/IMG_7745.jpeg",
     logo: "/images/future-forward-logo.png",
     tags: ["Non-profit", "Project Management", "Community"],
+    colors: "#3B369C"
   },
    {
     id: "classprofile",
@@ -42,6 +46,7 @@ export const mainProjects = [
     image: "",
     logo: "",
     tags: ["Community", "Web Development", "Data"],
+    colors: ""
   },
   {
     id: "yrhacks",
@@ -51,6 +56,7 @@ export const mainProjects = [
     image: "images/yrhacks crowd.jpeg",
     logo: "/images/yrhacks-logo.png",
     tags: ["Community", "Logistics", "Organizations"],
+    colors: "#5744AF"
   },
   {
     id: "cec",
@@ -60,6 +66,7 @@ export const mainProjects = [
     image: "",
     logo: "/images/cec-logo.webp",
     tags: ["iOS", "Swift", "App Development"],
+    colors: "#003DA5"
   },
   {
     id: "4sight",
@@ -69,5 +76,6 @@ export const mainProjects = [
     image: "",
     logo: "",
     tags: ["iOS", "Swift", "App Development"],
+    colors: ""
   },
 ]
