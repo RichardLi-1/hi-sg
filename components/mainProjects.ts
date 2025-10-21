@@ -52,7 +52,7 @@ export const mainProjects = [
     id: "yrhacks",
     title: "YRHacks",
     year: "2024-2025",
-    description: "Helped organize Canada's largest high school hackathon",
+    description: "Organized Canada's largest high school hackathon",
     image: "https://richardli-1.github.io/Old-Personal-Website/YRHacks%20banner.png",
     logo: "/images/yrhacks-logo.png",
     tags: ["Community", "Logistics", "Organizations"],

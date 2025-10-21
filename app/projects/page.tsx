@@ -50,7 +50,7 @@ export default function ProjectsPage() {
             </div>
           </StaggeredContent>
           <StaggeredContent delay={100}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-4">
               {allProjects.map((project, index) => (
   <div
     key={project.id}
