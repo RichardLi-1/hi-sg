@@ -1,15 +1,41 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 
 export function usePageViewTracker() {
+  const hasTracked = useRef(false)
+  const slashKeyHeld = useRef(false)
+
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "/") {
+        slashKeyHeld.current = true
+      }
+    }
+
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.key === "/") {
+        slashKeyHeld.current = false
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    window.addEventListener("keyup", handleKeyUp)
+
     const sendVisit = async () => {
+      if (slashKeyHeld.current) {
+        return
+      }
+
       // Skip bots
       if (/bot|crawler|spider/i.test(navigator.userAgent)) return
 
       // Skip vusercontent.net URLs
       if (window.location.href.includes("vusercontent.net")) return
+
+      // Only track once per page load
+      if (hasTracked.current) return
+      hasTracked.current = true
 
       let ip = "unknown"
       try {
@@ -42,5 +68,10 @@ export function usePageViewTracker() {
     }
 
     sendVisit()
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener("keyup", handleKeyUp)
+    }
   }, [])
 }

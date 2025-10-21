@@ -32,15 +32,15 @@ export function GifLoadingScreen({ onComplete }: GifLoadingScreenProps) {
 
     const pageLoadTimer = setTimeout(() => {
       onComplete()
-    }, 1840)
+    }, 2000)
 
     const panelLiftTimer = setTimeout(() => {
       setIsLifting(true)
-    }, 1540)
+    }, 1700)
 
     const hideTimer = setTimeout(() => {
       setIsVisible(false)
-    }, 2380)
+    }, 2700)
 
     return () => {
       clearTimeout(pageLoadTimer)

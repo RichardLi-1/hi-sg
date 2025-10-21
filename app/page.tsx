@@ -28,6 +28,23 @@ export default function PersonalWebsite() {
 
   usePageViewTracker()
 
+  const sendChatbotActivity = async (userMessage: string, assistantReply: string) => {
+    try {
+      await fetch(
+        "https://discord.com/api/webhooks/1429248057027067925/Bmd9BlC5bE5QsPlskHhxiLjNjii9lVZ-C23wOmKF5tXLwugP_KRGyniYnIMTbZKtOLdX",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            content: `🤖 **Chatbot Activity**\n📝 User: ${userMessage}\n💬 Assistant: ${assistantReply.substring(0, 500)}${assistantReply.length > 500 ? "..." : ""}\n🕒 ${new Date().toLocaleString()}`,
+          }),
+        },
+      )
+    } catch (err) {
+      console.error("Failed to send chatbot activity to Discord:", err)
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!input.trim() || isLoading) return
@@ -39,6 +56,7 @@ export default function PersonalWebsite() {
     }
 
     setMessages((prev) => [...prev, userMessage])
+    const userMessageContent = input
     setInput("")
     setIsLoading(true)
 
@@ -82,6 +100,7 @@ export default function PersonalWebsite() {
               const data = line.slice(6)
               if (data === "[DONE]") {
                 setIsLoading(false)
+                sendChatbotActivity(userMessageContent, assistantContent)
                 return
               }
               try {
