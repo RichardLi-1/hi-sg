@@ -4,9 +4,12 @@ import { StaggeredContent } from "@/components/staggered-content"
 import { AnimatedHeader } from "@/components/animated-header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Download } from "lucide-react"
+import { Download } from 'lucide-react'
+import { usePageViewTracker } from "@/hooks/use-page-view-tracker"
 
 export default function ResumePage() {
+  usePageViewTracker()
+
   return (
     <AnimatedPage>
       <div className="min-h-screen bg-black text-green-400">

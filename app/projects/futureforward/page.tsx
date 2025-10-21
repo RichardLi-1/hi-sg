@@ -5,8 +5,11 @@ import { AnimatedPage } from "@/components/animated-page"
 import { StaggeredContent } from "@/components/staggered-content"
 import { AnimatedHeader } from "@/components/animated-header"
 import { ExternalLink, Youtube } from "lucide-react"
+import { usePageViewTracker } from "@/hooks/use-page-view-tracker"
 
 export default function FutureForwardProjectPage() {
+  usePageViewTracker()
+
   useEffect(() => {
     // This redirect is still here, but the page content below will be rendered first
     // and then the redirect will happen. If you want to remove the redirect,
@@ -31,7 +34,7 @@ export default function FutureForwardProjectPage() {
                 <img
                   src="/images/future-forward-logo.png"
                   alt="Future Forward Logo"
-                  className="w-8 h-8 object-contain" // Adjusted size for title
+                  className="w-8 h-8 object-contain"
                 />
                 Future Forward
               </h1>
@@ -40,7 +43,6 @@ export default function FutureForwardProjectPage() {
           </StaggeredContent>
 
           <StaggeredContent delay={100}>
-            {/* Hero Image */}
             <div className="relative mb-8 aspect-video w-full bg-gray-800 overflow-hidden rounded-lg">
               <img
                 src="/images/IMG_7745.jpeg"
@@ -49,8 +51,6 @@ export default function FutureForwardProjectPage() {
               />
             </div>
           </StaggeredContent>
-
-          
 
           <StaggeredContent delay={300}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -79,7 +79,6 @@ export default function FutureForwardProjectPage() {
                     >
                       <p>Kirsten Hsiang</p>
                     </a>
-                    {/* Add other team members here if applicable */}
                   </div>
                 </div>
 
@@ -146,7 +145,59 @@ export default function FutureForwardProjectPage() {
             </div>
           </StaggeredContent>
 
-          {/* Add more sections as needed for Future Forward project details */}
+          <StaggeredContent delay={400}>
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-green-400 mb-6">Marketing Club</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    Our Marketing Club brings together students passionate about business, branding, and creative
+                    communication. Through interactive workshops and hands-on projects, members learn essential
+                    marketing concepts including digital marketing, social media strategy, and brand development.
+                  </p>
+                  <p>
+                    Students collaborate on real-world marketing campaigns, develop their creative skills, and gain
+                    practical experience that prepares them for careers in business and marketing. The club fosters an
+                    environment of innovation and teamwork, where ideas come to life.
+                  </p>
+                </div>
+                <div className="relative aspect-video w-full bg-gray-800 overflow-hidden rounded-lg">
+                  <img
+                    src="/images/IMG_7099.jpeg"
+                    alt="Marketing Club workshop with students collaborating"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </StaggeredContent>
+
+          <StaggeredContent delay={500}>
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-green-400 mb-6">Financial Literacy Series</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="relative aspect-video w-full bg-gray-800 overflow-hidden rounded-lg">
+                  <img
+                    src="/images/IMG_8320.jpeg"
+                    alt="Students learning financial literacy concepts"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    The Financial Literacy Series equips students with essential money management skills for their
+                    future. Through structured workshops, students learn about budgeting, saving, investing, and
+                    understanding credit - foundational concepts that are often overlooked in traditional education.
+                  </p>
+                  <p>
+                    Our program emphasizes practical application, helping students develop healthy financial habits
+                    early on. From understanding student loans to planning for long-term financial goals, we provide the
+                    knowledge and tools students need to make informed financial decisions throughout their lives.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </StaggeredContent>
         </main>
 
         <StaggeredContent delay={1100}>

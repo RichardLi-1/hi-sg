@@ -5,8 +5,12 @@ import { AnimatedHeader } from "@/components/animated-header"
 import { StaggeredContent } from "@/components/staggered-content"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
+import { usePageViewTracker } from "@/hooks/use-page-view-tracker"
 
 export default function ContactPage() {
+  // <CHANGE> Add Discord webhook tracking
+  usePageViewTracker()
+
   return (
     <AnimatedPage>
       <AnimatedHeader backHref="/" backText="Home" currentPage="/contact" />

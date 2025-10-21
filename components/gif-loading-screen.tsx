@@ -8,33 +8,46 @@ interface GifLoadingScreenProps {
 export function GifLoadingScreen({ onComplete }: GifLoadingScreenProps) {
   const [isVisible, setIsVisible] = useState(true)
   const [isLifting, setIsLifting] = useState(false)
+  const [gifLoaded, setGifLoaded] = useState(false)
 
   useEffect(() => {
-    console.log("[v0] Loading screen mounted, starting timers")
+    const img = new Image()
+    img.src = `/images/loading-animation.gif?t=${Date.now()}`
+
+    img.onload = () => {
+      // Add a small delay to ensure the GIF starts from the beginning
+      setTimeout(() => {
+        setGifLoaded(true)
+      }, 100)
+    }
+
+    // Fallback in case the image fails to load
+    img.onerror = () => {
+      setGifLoaded(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!gifLoaded) return
 
     const pageLoadTimer = setTimeout(() => {
-      console.log("[v0] Page content loading started")
       onComplete()
-    }, 1840) // Start page content loading 100ms before panel lifts
+    }, 1840)
 
     const panelLiftTimer = setTimeout(() => {
-      console.log("[v0] Panel lifting animation started")
       setIsLifting(true)
-    }, 1530)
+    }, 1540)
 
     const hideTimer = setTimeout(() => {
-      console.log("[v0] Loading screen hidden")
       setIsVisible(false)
-    }, 2380) // Extended to 1330 + 1000ms for longer animation
+    }, 2380)
 
     return () => {
       clearTimeout(pageLoadTimer)
       clearTimeout(panelLiftTimer)
       clearTimeout(hideTimer)
     }
-  }, [onComplete])
-
-  console.log("[v0] Loading screen render - isVisible:", isVisible, "isLifting:", isLifting)
+  }, [onComplete, gifLoaded])
 
   if (!isVisible) return null
 
@@ -49,7 +62,13 @@ export function GifLoadingScreen({ onComplete }: GifLoadingScreenProps) {
       }}
     >
       <div className="w-96 h-96 flex items-center justify-center">
-        <img src="/images/loading-animation.gif" alt="Loading animation" className="w-full h-full object-contain" />
+        {gifLoaded && (
+          <img
+            src={`/images/loading-animation.gif?t=${Date.now()}`}
+            alt="Loading animation"
+            className="w-full h-full object-contain"
+          />
+        )}
       </div>
     </div>
   )

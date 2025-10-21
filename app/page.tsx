@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import type React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -11,7 +11,9 @@ import { AnimatedPage } from "@/components/animated-page"
 import { StaggeredContent } from "@/components/staggered-content"
 import { ResponsiveHeader } from "@/components/responsiveheader"
 import { mainProjects } from "@/components/mainProjects"
+import { ProjectImageCycler } from "@/components/project-image-cycler"
 import ReactMarkdown from "react-markdown"
+import { usePageViewTracker } from "@/hooks/use-page-view-tracker"
 
 interface Message {
   id: string
@@ -24,47 +26,7 @@ export default function PersonalWebsite() {
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
-  const sendVisit = async () => {
-    // Skip bots
-    if (/bot|crawler|spider/i.test(navigator.userAgent)) return
-
-    // Skip vusercontent.net URLs
-    if (window.location.href.includes("vusercontent.net")) return
-
-    let ip = "unknown"
-    try {
-      const res = await fetch("https://api.ipify.org?format=json")
-      const data = await res.json()
-      ip = data.ip || "unknown"
-    } catch (err) {
-      console.warn("Failed to get IP, sending notification without it.")
-    }
-
-    // Check if URL is LinkedIn referral
-    const isLinkedIn = window.location.href === "https://www.richardli.dev/?l"
-
-    const message = isLinkedIn
-      ? `👀 New visitor on ${window.location.href} from **LinkedIn**\n🕒 ${new Date().toLocaleString()}\n🌐 IP: ${ip}`
-      : `👀 New visitor on ${window.location.href}\n🕒 ${new Date().toLocaleString()}\n🌐 IP: ${ip}`
-
-    try {
-      await fetch(
-        "https://discord.com/api/webhooks/1429248057027067925/Bmd9BlC5bE5QsPlskHhxiLjNjii9lVZ-C23wOmKF5tXLwugP_KRGyniYnIMTbZKtOLdX",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ content: message }),
-        },
-      )
-    } catch (err) {
-      console.error("Failed to send Discord notification:", err)
-    }
-  }
-
-  sendVisit()
-}, [])
-
+  usePageViewTracker()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -349,30 +311,31 @@ export default function PersonalWebsite() {
                 </Link>
               </div>
 
-              {/* Row of 3 project tiles */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-gray-300">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {mainProjects.slice(0, 3).map((project) => (
                   <Link key={project.id} href={`/projects/${project.id}`}>
-                    <Card className="bg-gray-900 border-gray-700 hover:border-green-400 transition-all duration-300 cursor-pointer group h-full rounded-lg overflow-hidden">
+                    <Card className="transition-all duration-300 cursor-pointer group border-gray-700 bg-gray-900 hover:border-green-400 h-full">
                       <CardContent className="p-0 h-full flex flex-col">
-                        <div className="aspect-video w-full bg-gray-800">
-                          <img
-                            src={project.image || "/placeholder.svg"}
+                        <div className="aspect-video w-full bg-gray-800 overflow-hidden">
+                          <ProjectImageCycler
+                            images={[project.image, (project as any).image2, (project as any).image3]}
                             alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>
                         <div className="p-4 flex flex-col flex-grow">
                           <div className="flex items-center justify-between mb-2">
-                            <h3 className="text-lg font-bold text-green-400">{project.title}</h3>
-                            <span className="text-gray-400 text-xs">{project.year}</span>
+                            <h3 className="text-lg font-bold text-white group-hover:underline transition-all duration-300">
+                              {project.title}
+                            </h3>
+                            <span className="text-gray-400 text-sm">{project.year}</span>
                           </div>
-                          <p className="text-sm text-gray-300 flex-grow">{project.description}</p>
+                          <p className="text-sm text-gray-300 leading-relaxed flex-grow">{project.description}</p>
                           <div className="flex flex-wrap gap-1 mt-3">
                             {project.tags.map((tag) => (
                               <span
                                 key={tag}
-                                className="px-2 py-0.5 bg-gray-800 text-gray-300 text-xs rounded border border-gray-600"
+                                className="px-2 py-1 bg-gray-800 text-gray-400 text-xs rounded border border-gray-600"
                               >
                                 {tag}
                               </span>
@@ -420,7 +383,6 @@ export default function PersonalWebsite() {
 
               <Card className="bg-gray-900 border-gray-700">
                 <CardContent className="p-4">
-                  {/* Suggested Questions */}
                   {messages.length === 0 && (
                     <div className="mb-4">
                       <div className="text-gray-500 text-sm mb-3">
@@ -442,7 +404,6 @@ export default function PersonalWebsite() {
                     </div>
                   )}
 
-                  {/* Chat Messages */}
                   <div className="space-y-4 mb-4 max-h-96 overflow-y-auto">
                     {messages.map((message) => (
                       <div key={message.id} className="space-y-2">
@@ -486,7 +447,6 @@ export default function PersonalWebsite() {
                     {isLoading && <div className="text-gray-500 text-sm">Richard is thinking...</div>}
                   </div>
 
-                  {/* Chat Input */}
                   <form onSubmit={handleSubmit} className="flex space-x-2">
                     <Input
                       value={input}
