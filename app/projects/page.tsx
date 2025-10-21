@@ -76,16 +76,10 @@ export default function ProjectsPage() {
           </div>
           <div className="p-6 mx-0 px-2.5">
             <div className="flex -mt-2">
-              <img
-                src={project.logo || "/placeholder.svg?height=80&width=80"}
-                alt={`${project.title} logo`}
-                className={`w-10 h-10 rounded-xl mr-4 flex-shrink-0 object-contain ${
-                  !project.logo || project.logo.includes("placeholder.svg") ? "hidden" : ""
-                }`}
-              />
+              
               <div className="flex-grow">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-bold text-white -mb-4 -mt-4 group-hover:underline transition-all duration-300">
+                  <h3 className="text-l font-bold text-white -mb-6 -mt-6 group-hover:underline transition-all duration-300">
                     {project.title}
                   </h3>
                   <span className="text-gray-400 text-sm">{project.year}</span>
