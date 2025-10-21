@@ -70,6 +70,12 @@ export default function SalesPatriotProjectPage() {
           <StaggeredContent delay={300}>
           <p>Watch Dad Sneeze: <a href="https://youtu.be/Pkpd0WDR_sA">https://youtu.be/Pkpd0WDR_sA</a></p>
           </StaggeredContent>
+
+          <StaggeredContent delay={300}>
+          <div className="space-y-4 text-gray-300">
+                  <p>Designed different personas that were composed of hand-drawn characters with different emotions Created custom event triggers for Dave to pop up on (e.g. tab overload, late night, emotional check-ins) Used Gemini AI to generate conversation and different personalities + ElevenLabs API to simulate dad voice Challenges we ran into but conquered successfully 🥊 Format... we weren't sure how we would display things to ensure convenience and seamlessness, but thank goodness it all worked out Timing the animation and audio correctly for maximum dad-ness 😅 😞</p>
+                </div>
+          </StaggeredContent>
         </main>
 
         <StaggeredContent delay={1100}>
