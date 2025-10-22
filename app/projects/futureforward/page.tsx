@@ -43,7 +43,7 @@ export default function FutureForwardProjectPage() {
           </StaggeredContent>
 
           <StaggeredContent delay={100}>
-            <div className="relative mb-8 aspect-video w-full bg-gray-800 overflow-hidden rounded-lg">
+            <div className="relative mb-8 aspect-video w-full bg-gray-800 overflow-hidden">
               <img
                 src="/images/IMG_7745.jpeg"
                 alt="Future Forward screenshots"
@@ -130,7 +130,7 @@ export default function FutureForwardProjectPage() {
                 <Youtube className="w-5 h-5" />
                 Featured Video
               </h3>
-              <div className="aspect-video w-full bg-gray-800 rounded-lg overflow-hidden">
+              <div className="aspect-video w-full bg-gray-800 overflow-hidden">
                 <iframe
                   width="100%"
                   height="100%"
@@ -148,35 +148,44 @@ export default function FutureForwardProjectPage() {
           <StaggeredContent delay={400}>
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-green-400 mb-6">Marketing Club</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-4 text-gray-300">
                   <p>
-                    Our Marketing Club brings together students passionate about business, branding, and creative
-                    communication. Through interactive workshops and hands-on projects, members learn essential
-                    marketing concepts including digital marketing, social media strategy, and brand development.
-                  </p>
-                  <p>
-                    Students collaborate on real-world marketing campaigns, develop their creative skills, and gain
-                    practical experience that prepares them for careers in business and marketing. The club fosters an
-                    environment of innovation and teamwork, where ideas come to life.
+                    Markville Marketing is a marketing firm that has provided services for six organizations and counting. Inspired by Enactus, we created hands-on education for MSS students, where members rotated jobs, such as Account Manager. Members tried each job and assessed how it aligned with their interests via surveys, which we used to generate nine personalized career results for our most regular members. Using social media, we increased signups by 300% to 59 and hosted our maximum of 20 people per meeting. To run the club, we planned meetings one week in advance, communicated on Instagram, and used survey analytics to guide meeting content. Each member contributed to both internal club initiatives and external client work.
                   </p>
                 </div>
-                <div className="relative aspect-video w-full bg-gray-800 overflow-hidden rounded-lg">
+                <div className="relative aspect-video w-full bg-gray-800 overflow-hidden">
                   <img
                     src="/images/IMG_7099.jpeg"
                     alt="Marketing Club workshop with students collaborating"
                     className="w-full h-full object-cover"
                   />
                 </div>
-              </div>
             </div>
+
+            
+              <div className="aspect-video w-full bg-gray-800 overflow-hidden">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/8YRX-q-8IMo?si=p_lUSvenQm46ISRk"
+                  title="Marketing Club Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+            
+
           </StaggeredContent>
+
+
 
           <StaggeredContent delay={500}>
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-green-400 mb-6">Financial Literacy Series</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="relative aspect-video w-full bg-gray-800 overflow-hidden rounded-lg">
+                <div className="relative aspect-video w-full bg-gray-800 overflow-hidden">
                   <img
                     src="/images/IMG_8320.jpeg"
                     alt="Students learning financial literacy concepts"
@@ -197,8 +206,12 @@ export default function FutureForwardProjectPage() {
                 </div>
               </div>
             </div>
+            im still updating this page...
           </StaggeredContent>
-        </main>
+        </main> 
+
+
+        
 
         <StaggeredContent delay={1100}>
           <Footer />
