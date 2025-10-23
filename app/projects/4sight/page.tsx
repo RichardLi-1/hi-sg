@@ -25,7 +25,7 @@ export default function SightProjectPage() {
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold italic text-green-400 mb-2 flex items-center justify-center gap-2">
                 <img
-                  src="/images/boink-logo.webp"
+                  src="/images/jamAsset.PNG"
                   alt="Bo!nk Logo"
                   className="w-8 h-8 object-contain rounded-md" // Adjusted size for title
                 />
@@ -40,7 +40,7 @@ export default function SightProjectPage() {
             {/* Changed from 400 */}
             <div className="relative mb-8 aspect-video w-full bg-gray-800 overflow-hidden rounded-lg">
               <img
-                src="/images/design-mode/image.png"
+                src=""
                 alt="Bo!nk game screenshots"
                 className="w-full h-full object-cover"
               />
@@ -54,16 +54,16 @@ export default function SightProjectPage() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-green-400 font-bold mb-2">Timeline</h3>
-                  <p className="text-gray-300">6 months, 2021</p>
+                  <p className="text-gray-300">May 2025</p>
                 </div>
                 <div>
                   <h3 className="text-green-400 font-bold mb-2">Tools</h3>
                   <div className="space-y-1 text-gray-300">
-                    <p>Unity</p>
-                    <p>C#</p>
-                    <p>ShaderLab</p>
-                    <p>HLSL</p>
-                    <p>App Store Connect</p>
+                    <p>Next.js (App Router)</p>
+<p>Web Speech API</p>
+<p>TouchDesigner</p>
+<p>Tailwind CSS</p>
+<p>face-api.js</p>
                   </div>
                 </div>
                 <div>
@@ -79,16 +79,10 @@ export default function SightProjectPage() {
                 <h3 className="text-green-400 font-bold mb-2">Overview</h3>
                 <div className="space-y-4 text-gray-300">
                   <p>
-                    Bo!nk is a Windows Vista-inspired inkball game that I conceptualized and designed. As the lead UX
-                    designer, I worked with a team to bring this nostalgic game to the App Store.
-                  </p>
+                    An experimental Next.js application for vision testing that includes gaze tracking and peripheral vision assessments. The app uses the device webcam and microphone, face-api.js models, and a modern UI built with Tailwind CSS and Radix UI.</p>
+
                   <p>
-                    The game features classic inkball mechanics with a nostalgic Windows Vista aesthetic, bringing back
-                    memories of the beloved Microsoft game.
-                  </p>
-                  <p>
-                    This project taught me valuable lessons about game development, user interface design, and the App
-                    Store submission process.
+                    Half of the global population is expected to be myopic by 2050. 4Sight is an accessible, user-friendly way to screen for vision loss without needing a clinic. It provides a convenient, at-home method to track vision changes — see clearly, live fully.
                   </p>
                 </div>
               </div>
@@ -107,77 +101,25 @@ export default function SightProjectPage() {
                 </div>
                 
               </div>
+              </div>
 
               <div className=" my-12">
               <iframe width="560" height="315" src="https://www.youtube.com/embed/G-rITGNKfxI?si=7lBqLqzAdgIEbJIf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                
+                <p>Shoutout Justin for this</p>
                 
               </div>
 
-              <h2 className="text-2xl font-bold text-green-400 mb-4">Game Design</h2>
+              <h2 className="text-2xl font-bold text-green-400 mb-4">Design</h2>
               <p className="text-gray-300 mb-4">
-                As the UX designer who conceived the idea, I
+                
                 <ul className="text-gray-300 space-y-2 mb-6">
-                  <li>• Directed the vision of the game</li>
-                  <li>• Created the map of several levels</li>
+                  <li></li>
+                  <li></li>
                 </ul>
-                We designed Bo!nk to faithfully recreate the core Inkball experience while adapting it for touch
-                interfaces:
               </p>
 
               
 
-              <h2 className="text-2xl font-bold text-green-400 mb-4">Results & Takeaways</h2>
-              <p className="text-gray-300 mb-4">
-                Bo!nk successfully launched on the App Store and provided valuable insights into mobile game
-                development:
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-                <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
-                  <h4 className="text-green-400 font-bold mb-2">Game Development</h4>
-                  <p className="text-gray-300 text-sm">
-                    Learned the fundamentals of game design, physics simulation, and creating engaging user experiences
-                    that keep players coming back.
-                  </p>
-                </div>
-
-                <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
-                  <h4 className="text-green-400 font-bold mb-2">iOS Development</h4>
-                  <p className="text-gray-300 text-sm">Gained deep experience with iOS development patterns.</p>
-                </div>
-
-                <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
-                  <h4 className="text-green-400 font-bold mb-2">Product Launch</h4>
-                  <p className="text-gray-300 text-sm">
-                    Experienced the complete product lifecycle from concept to App Store publication, including
-                    marketing, user feedback, and iteration.
-                  </p>
-                </div>
-
-                <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
-                  <h4 className="text-green-400 font-bold mb-2">User-Centered Design</h4>
-                  <p className="text-gray-300 text-sm">
-                    Learned the importance of intuitive interfaces and how to adapt desktop experiences for mobile touch
-                    interactions.
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-gray-300">
-                Bo!nk remains available on the{" "}
-                <a
-                  href="https://apps.apple.com/ca/app/bo-nk/id1570376501"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-green-400 hover:underline"
-                >
-                  App Store
-                </a>{" "}
-                and represents an important milestone in my development journey. It sparked my passion for creating
-                digital experiences and laid the foundation for my future work in technology and product development.
-              </p>
-            </div>
           </StaggeredContent>
         </main>
 

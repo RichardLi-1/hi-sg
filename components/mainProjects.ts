@@ -77,7 +77,7 @@ export const mainProjects = [
     year: "2025",
     description: "Eye Tester App",
     image: "",
-    logo: "",
+    logo: "/images/jamAsset.PNG",
     tags: ["iOS", "Swift", "App Development"],
     colors: "",
   },

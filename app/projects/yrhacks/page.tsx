@@ -112,7 +112,7 @@ export default function YRHacksProjectPage() {
               <div>
                 <h3 className="text-green-400 font-bold mb-2">Overview</h3>
                 <div className="space-y-4 text-gray-300">
-                  <p>YRHacks is Canada's largest high school hackathon. This year, we had 250+ hackers.</p>
+                  <p>YRHacks is Canada's largest high school hackathon, and a unique offering from the York Region District School Board. This year, we had 250+ hackers.</p>
                 </div>
               </div>
             </div>
@@ -155,6 +155,9 @@ export default function YRHacksProjectPage() {
             <div className="relative mb-8 aspect-video w-full bg-gray-800 overflow-hidden">
               <img src="/placeholder.svg" alt="YRHacks lanyards" className="w-full h-full object-cover" />
             </div>
+            <p className="text-gray-300">
+              I designed lanyards! YRHacks regulars noted that the lanyards improved from last year.
+            </p>
           </StaggeredContent>
 
           <StaggeredContent delay={1000}>
@@ -181,8 +184,8 @@ export default function YRHacksProjectPage() {
               />
             </div>
             <p className="text-gray-300">
-              Getting to know the team over these 10 months was amazing, and I'm grateful to them for taking a chance on
-              me. There was a lot to learn from everyone there, and I'm sure the future is bright.
+              This was one of the most talent-packed teams I've been apart of. There was a lot to learn from everyone there, and getting to know everyone over these 10 months was amazing. I'm grateful to them for taking a chance on
+              me.
             </p>
           </StaggeredContent>
         </main>
