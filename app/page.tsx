@@ -265,6 +265,10 @@ export default function PersonalWebsite() {
                     for the syde class of 2030
                   </span>
                 </li>
+                <li>
+                <span className="mr-2">•</span>
+                  learning angular and postgresql
+                </li>
 
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
