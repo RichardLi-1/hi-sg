@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Projects - Richard Li",
+  title: "Projects",
   description:
     "Explore Richard Li's portfolio of full-stack development projects including iOS apps, web applications, and AI integrations. Featured projects: SalesPatriot, YRHacks, Future Forward, Career Education Council app, Bo!nk, and more.",
   keywords: [

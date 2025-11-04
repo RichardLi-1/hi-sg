@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Resume - Richard Li",
+  title: "Resume",
   description:
     "Richard Li's resume - Full Stack Developer and Systems Design Engineering student at University of Waterloo. Experience with React, Next.js, Swift, TypeScript, Python, and AI integration. View work experience, projects, and technical skills.",
   keywords: [
