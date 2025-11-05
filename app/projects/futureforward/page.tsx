@@ -19,18 +19,19 @@ export default function FutureForwardProjectPage() {
 
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-black text-green-400">
+      <div className="max-w-4xl mx-auto p-6 space-y-6">
         <AnimatedHeader
           backHref="/projects"
           backText="Back"
           currentPage="/projects/futureforward"
-          rightLinks={[{ href: "https://www.futureforward.info/", text: "Website", external: true }]}
+          // rightLinks={[{ href: "https://www.futureforward.info/", text: "Website", external: true }]}
         />
+        
 
-        <main className="max-w-4xl mx-auto p-6" style={{ paddingTop: "120px" }}>
+        <main className="max-w-4xl mx-auto p-6 space-y-6" style={{ paddingTop: "60px" }}>
           <StaggeredContent delay={0}>
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold italic text-green-400 mb-2 flex items-center justify-center gap-2">
+              <h1 className="text-3xl font-bold italic mb-2 flex items-center justify-center gap-2">
                 <img
                   src="/images/future-forward-logo.png"
                   alt="Future Forward Logo"
@@ -38,26 +39,29 @@ export default function FutureForwardProjectPage() {
                 />
                 Future Forward
               </h1>
-              <p className="text-lg text-gray-300">Non-profit, 2024</p>
+              <p className="text-lg text-gray-300">Non-profit, 2024-2025</p>
             </div>
           </StaggeredContent>
 
           <StaggeredContent delay={100}>
-            <div className="relative mb-8 aspect-video w-full bg-gray-800 overflow-hidden">
+            <div className="relative  aspect-video w-full bg-gray-800 overflow-hidden">
               <img
                 src="/images/IMG_7745.jpeg"
                 alt="Future Forward screenshots"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover mx-0"
               />
             </div>
           </StaggeredContent>
 
           <StaggeredContent delay={300}>
+          <div className="bg-zinc-800 max-width rounded-md mb-8"> <p className="p-2 py-3 px-3.5 text-zinc-300">🥇 This project was awarded Provincial Champion at DECA Provincials 2025!</p></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+
+              
               <div className="space-y-6">
                 <div>
                   <h3 className="text-green-400 font-bold mb-2">Timeline</h3>
-                  <p className="text-gray-300">Ongoing, 2024-Present</p>
+                  <p className="text-gray-300">Sept 2024-A</p>
                 </div>
 
                 <div>
@@ -100,7 +104,7 @@ export default function FutureForwardProjectPage() {
               </div>
 
               <div>
-                <h3 className="text-green-400 font-bold mb-2">Overview</h3>
+                <h3 className="text-green-400 font-bold mb-2 rounded-sm">Overview</h3>
                 <div className="space-y-4 text-gray-300">
                   <p>
                     Future Forward is a non-profit initiative dedicated to helping students discover their vocations and
@@ -138,8 +142,8 @@ export default function FutureForwardProjectPage() {
           </StaggeredContent>
 
           <StaggeredContent delay={400}>
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold text-green-400 mb-6">Marketing Club</h2>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-green-400">Marketing Club</h2>
                 <div className="space-y-4 text-gray-300">
                   <p>
                     Markville Marketing is a marketing firm that has provided services for six organizations and counting. Inspired by Enactus, we created hands-on education for MSS students, where members rotated jobs, such as Account Manager. Members tried each job and assessed how it aligned with their interests via surveys, which we used to generate nine personalized career results for our most regular members. Using social media, we increased signups by 300% to 59 and hosted our maximum of 20 people per meeting. To run the club, we planned meetings one week in advance, communicated on Instagram, and used survey analytics to guide meeting content. Each member contributed to both internal club initiatives and external client work.
@@ -186,19 +190,16 @@ export default function FutureForwardProjectPage() {
                 </div>
                 <div className="space-y-4 text-gray-300">
                   <p>
-                    The Financial Literacy Series equips students with essential money management skills for their
-                    future. Through structured workshops, students learn about budgeting, saving, investing, and
-                    understanding credit - foundational concepts that are often overlooked in traditional education.
-                  </p>
-                  <p>
-                    Our program emphasizes practical application, helping students develop healthy financial habits
-                    early on. From understanding student loans to planning for long-term financial goals, we provide the
-                    knowledge and tools students need to make informed financial decisions throughout their lives.
+                    As Financial Literacy is crucial to inform career decisions, Future Forward collaborated with the Markville Finance Club to deliver two lessons on financial literacy to 15 students and hosted the University of Waterloo’s Financial Literacy Competition with 11 participants.
                   </p>
                 </div>
+                
               </div>
+              
             </div>
-            im still updating this page...
+            <p className="text-gray-300">
+                    Unfortunately, now that I've graduated, the project is no longer continued and the website has been taken down. However, our project continues to be used for training at Markville DECA.
+                  </p>
           </StaggeredContent>
         </main> 
 
