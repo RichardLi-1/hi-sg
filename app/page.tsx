@@ -408,22 +408,10 @@ export default function PersonalWebsite() {
                 <CardContent className="p-4">
                   {messages.length === 0 && (
                     <div className="mb-4">
-                      <div className="text-gray-500 text-sm mb-3">
+                      <div className="text-gray-500 text-sm">
                         Ask me detailed questions about Richard's specific roles and experiences:
                       </div>
-                      <div className="flex flex-wrap gap-2">
-                        {suggestedQuestions.map((question) => (
-                          <Button
-                            key={question}
-                            variant="outline"
-                            size="sm"
-                            className="text-xs bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700 whitespace-normal text-left h-auto py-2"
-                            onClick={() => handleSuggestedQuestion(question)}
-                          >
-                            {question}
-                          </Button>
-                        ))}
-                      </div>
+                      
                     </div>
                   )}
 
