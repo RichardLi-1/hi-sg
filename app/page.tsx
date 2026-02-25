@@ -358,11 +358,10 @@ export default function PersonalWebsite() {
               <Card className="border" style={{ cornerShape: "superellipse", borderRadius: "24px", background: "var(--card-bg)", borderColor: "var(--border-2)" }}>
                 <CardContent className="p-4">
                   {messages.length === 0 && (
-                    <div className="mb-4">
+                    <div>
                       <div className="text-sm" style={{ color: "var(--text-4)" }}>
                         Ask me detailed questions about Richard's specific roles and experiences:
                       </div>
-
                     </div>
                   )}
 
