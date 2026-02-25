@@ -2,29 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 0%;
-    --foreground: 120 100% 50%;
-    --card: 0 0% 6%;
-    --card-foreground: 120 100% 50%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 120 100% 50%;
-    --primary: 120 100% 25%;
-    --primary-foreground: 120 100% 90%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 120 100% 50%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 120 20% 65%;
-    --accent: 0 0% 15%;
-    --accent-foreground: 120 100% 50%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 120 100% 90%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 120 100% 25%;
-    --radius: 0.5rem;
-  }
+/* ── Fonts ────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Toronto Subway';
+  src: url('/fonts/Toronto-Subway-W01-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SFCamera';
+  src: url('/fonts/SFCamera-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Design tokens – dark (default) ─────────────────── */
+:root,
+.dark {
+  --bg: #0c0c0b;
+  --text: #e8e4dc;
+  --text-2: #b8b4ac;
+  --text-3: #888480;
+  --text-4: #605c58;
+  --text-5: #403c38;
+  --card-bg: #181715;
+  --surface: #141210;
+  --surface-hover: #1e1c1a;
+  --border-2: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(12, 12, 11, 0.85);
+
+  /* Tailwind semantic vars */
+  --background: 0 0% 5%;
+  --foreground: 30 8% 91%;
+  --card: 30 5% 9%;
+  --card-foreground: 30 8% 91%;
+  --popover: 30 5% 9%;
+  --popover-foreground: 30 8% 91%;
+  --primary: 120 100% 25%;
+  --primary-foreground: 120 100% 90%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 30 8% 91%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 30 5% 65%;
+  --accent: 0 0% 15%;
+  --accent-foreground: 30 8% 91%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 30 8% 91%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 120 100% 25%;
+  --radius: 0.5rem;
+}
+
+/* ── Design tokens – light ───────────────────────────── */
+.light {
+  --bg: #f5f4f0;
+  --text: #1a1815;
+  --text-2: #4a4845;
+  --text-3: #7a7775;
+  --text-4: #aaa8a5;
+  --text-5: #ccc9c5;
+  --card-bg: #ffffff;
+  --surface: #efede8;
+  --surface-hover: #e5e3de;
+  --border-2: rgba(0, 0, 0, 0.09);
+  --glass-bg: rgba(245, 244, 240, 0.85);
+
+  /* Tailwind semantic vars */
+  --background: 40 15% 95%;
+  --foreground: 25 10% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 25 10% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 25 10% 10%;
+  --primary: 120 60% 30%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 40 10% 90%;
+  --secondary-foreground: 25 10% 10%;
+  --muted: 40 10% 90%;
+  --muted-foreground: 25 5% 45%;
+  --accent: 40 10% 90%;
+  --accent-foreground: 25 10% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 40 10% 85%;
+  --input: 40 10% 85%;
+  --ring: 120 60% 30%;
 }
 
 @layer base {
@@ -32,8 +98,11 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-extralight; /* Changed font-weight to extralight */
-    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-inter), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    transition: background 0.25s ease, color 0.25s ease;
   }
 }
 
@@ -81,4 +150,269 @@
 .squircle-lg {
   border-radius: 24px;
   corner-shape: squircle;
+}
+
+/* ── Global photography-style typography ─────────────── */
+h1 {
+  font-family: 'SFCamera', 'Toronto Subway', 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+h2 {
+  font-family: 'Toronto Subway', 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+h3 {
+  font-family: 'Toronto Subway', 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+/* ── Photography-style card ──────────────────────────── */
+.photo-card {
+  background: var(--card-bg);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--border-2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.photo-card:hover {
+  transform: scale(0.98);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Page wrapper utility ────────────────────────────── */
+.page-bg {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Light mode: override hardcoded bg-black and text-green-400 containers */
+.light .min-h-screen {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ── Section heading style ───────────────────────────── */
+.section-label {
+  font-family: 'Toronto Subway', 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ── Shimmer animation (global) ──────────────────────── */
+@keyframes shimmer {
+  from { background-position: 150% 0; }
+  to   { background-position: -150% 0; }
+}
+
+/* ── Global squircle: apply corner-shape to all rounded elements ─ */
+[class*="rounded-"] {
+  corner-shape: squircle;
+}
+
+/* ── Light mode hover overrides ─────────────────────────────── */
+/* hover:text-stone-100 is near-white (dark mode only); remap to --text in light */
+.light .hover\:text-stone-100:hover {
+  color: var(--text);
+}
+
+/* ── .page-bg remap: Tailwind color classes → CSS vars ───────── */
+
+/* Text color overrides */
+.page-bg .text-green-400,
+.page-bg .text-green-300,
+.page-bg h1.text-green-400,
+.page-bg h2.text-green-400,
+.page-bg h3.text-green-400,
+.page-bg h4.text-green-400,
+.page-bg h1.text-green-300,
+.page-bg h2.text-green-300,
+.page-bg h3.text-green-300,
+.page-bg h4.text-green-300 {
+  color: var(--text);
+}
+
+.page-bg .text-gray-300 {
+  color: var(--text-2);
+}
+
+.page-bg .text-gray-400 {
+  color: var(--text-3);
+}
+
+.page-bg .text-gray-500,
+.page-bg .text-gray-600 {
+  color: var(--text-4);
+}
+
+.page-bg .text-white {
+  color: var(--text);
+}
+
+/* Background overrides */
+.page-bg .bg-black {
+  background: var(--bg);
+}
+
+.page-bg .bg-gray-900 {
+  background: var(--card-bg);
+}
+
+.page-bg .bg-gray-800 {
+  background: var(--surface);
+}
+
+.page-bg .bg-gray-700 {
+  background: var(--surface-hover);
+}
+
+/* Border overrides */
+.page-bg .border-gray-700,
+.page-bg .border-gray-800 {
+  border-color: var(--border-2);
+}
+
+/* Button overrides */
+.page-bg .bg-green-600 {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.page-bg .hover\:bg-green-700:hover {
+  background: var(--text-2);
+  color: var(--bg);
+}
+
+.page-bg .border-green-600 {
+  border-color: var(--border-2);
+}
+
+.page-bg .text-yellow-400 {
+  color: #c9a227;
+}
+
+/* Link/interactive green → text var */
+.page-bg a.text-green-400,
+.page-bg .hover\:text-green-300:hover {
+  color: var(--text);
+}
+
+/* Header pill: true rounded-full, not squircle */
+.header-pill {
+  corner-shape: initial;
+  border-radius: 9999px;
+}
+
+/* All children inside header pill also opt out of squircle */
+.header-pill [class*="rounded-"] {
+  corner-shape: initial;
+}
+
+/* XP toggle track (h-6 w-11) and thumb (h-4 w-4 bg-white): always true circle/pill */
+.h-6.w-11.rounded-full,
+.h-4.w-4.bg-white.rounded-full {
+  corner-shape: initial;
+}
+
+/* Mobile-only bottom padding so fixed pill doesn't cover footer */
+@media (max-width: 767px) {
+  .page-bg {
+    padding-bottom: 5rem;
+  }
+}
+
+/* Header-specific glass pill override for light mode */
+.light .header-pill {
+  background: rgba(245, 244, 240, 0.82);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.dark .header-pill {
+  background: rgba(12, 12, 11, 0.82);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Header nav link colors + font → CSS vars */
+header {
+  font-family: 'Toronto Subway', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.header-pill a,
+.header-pill button,
+.header-pill span {
+  color: var(--text-3);
+  transition: color 0.15s;
+}
+
+.header-pill a:hover,
+.header-pill button:hover {
+  color: var(--text);
+}
+
+/* ── Nav item pill (new header design) ───────────────────────── */
+.nav-item {
+  font-family: 'Toronto Subway', 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 6px 12px;
+  border-radius: 9999px;
+  corner-shape: initial;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.nav-item:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.nav-item.active {
+  color: var(--text);
+  background: transparent;
+}
+
+/* Logo wordmark */
+.nav-logo {
+  font-family: 'Toronto Subway', 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.nav-logo:hover {
+  opacity: 0.6;
+}
+
+/* Personalize dropdown entrance */
+@keyframes dropdownEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

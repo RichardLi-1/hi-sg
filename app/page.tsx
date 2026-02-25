@@ -156,7 +156,7 @@ export default function PersonalWebsite() {
 
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-black text-[#4BDE7F]">
+      <div className="min-h-screen" style={{ background: "var(--bg)", color: "var(--text)" }}>
         {/* Header */}
 
         <ResponsiveHeader isHomepage={true} currentPage="/" />
@@ -167,8 +167,8 @@ export default function PersonalWebsite() {
             {" "}
             {/* Changed from 200 */}
             <section className="space-y-4">
-              <h1 className="text-4xl font-bold">Hey, I'm Richard!</h1>
-              <div className="space-y-2 text-gray-300">
+              <h1 style={{ fontSize: "clamp(28px, 4vw, 48px)" }}>Hey, I'm Richard!</h1>
+              <div className="space-y-2" style={{ color: "var(--text-2)" }}>
                 <p>
                   I'm 18, based in{" "}
                   <span className="underline">
@@ -193,8 +193,8 @@ export default function PersonalWebsite() {
             {" "}
             {/* Changed from 400 */}
             <section className="space-y-4">
-              <h2 className="text-xl">I'm currently...</h2>
-              <ul className="space-y-2 text-gray-300 ml-4">
+              <h2 className="text-xl section-label">I'm currently...</h2>
+              <ul className="space-y-2 ml-4" style={{ color: "var(--text-2)" }}>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
                   <span>
@@ -242,8 +242,8 @@ export default function PersonalWebsite() {
             {" "}
             {/* Changed from 600 */}
             <section className="space-y-4">
-              <h2 className="text-xl">Previously I...</h2>
-              <ul className="space-y-2 text-gray-300 ml-4">
+              <h2 className="text-xl section-label">Previously I...</h2>
+              <ul className="space-y-2 ml-4" style={{ color: "var(--text-2)" }}>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
                   <span>interned at a YC-backed SaaS startup, analyzing ai trends and working on UI/UX design</span>
@@ -276,18 +276,19 @@ export default function PersonalWebsite() {
           <StaggeredContent delay={500}>
             <section className="space-y-4">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl">
+                <h2 className="text-xl section-label">
                   Some{" "}
                   <a
                     href="/projects"
                     className="underline hover:text-stone-100 inline-block transform transition-transform duration-200 hover:scale-110"
+                    style={{ color: "inherit" }}
                   >
                     projects
                   </a>{" "}
                   I made...
                 </h2>
                 <Link href="/projects">
-                  <span className="text-xs text-gray-400 hover:text-gray-300 hover:underline cursor-pointer">
+                  <span className="text-xs hover:underline cursor-pointer" style={{ color: "var(--text-4)" }}>
                     See More
                   </span>
                 </Link>
@@ -296,29 +297,27 @@ export default function PersonalWebsite() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {mainProjects.slice(0, 3).map((project) => (
                   <Link key={project.id} href={`/projects/${project.id}`}>
-                    <Card
-                      className="transition-all duration-300 cursor-pointer group border-background bg-background h-full hover:scale-[0.98]"
-                      style={{ "--glow-color": project.colors || "#22c55e99" } as React.CSSProperties}
+                    <div
+                      className="photo-card h-full flex flex-col cursor-pointer group"
+                      style={{ "--glow-color": project.colors || "#22c55e44" } as React.CSSProperties}
                     >
-                      <CardContent className="p-0 h-full flex flex-col">
-                        <div className="aspect-video w-full bg-gray-800 overflow-hidden squircle-lg transition-shadow duration-300 group-hover:shadow-[0_0px_120px_-20px_var(--glow-color)]">
-                          <ProjectImageCycler
-                            images={[project.image, (project as any).image2, (project as any).image3]}
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-300"
-                          />
+                      <div className="aspect-video w-full overflow-hidden squircle-lg transition-shadow duration-300 group-hover:shadow-[0_0px_120px_-20px_var(--glow-color)]" style={{ background: "var(--surface)" }}>
+                        <ProjectImageCycler
+                          images={[project.image, (project as any).image2, (project as any).image3]}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="px-4 py-3 flex flex-col flex-grow">
+                        <div className="flex items-center justify-between mb-1">
+                          <h3 style={{ fontSize: "14px", letterSpacing: "0.02em", fontWeight: 500, color: "var(--text)" }}>
+                            {project.title}
+                          </h3>
+                          <span style={{ fontSize: "11px", color: "var(--text-3)", letterSpacing: "0.04em" }}>{project.year}</span>
                         </div>
-                        <div className="py-3 flex flex-col flex-grow">
-                          <div className="flex items-center justify-between mb-1">
-                            <h3 className="text-base font-bold text-white transition-all duration-300">
-                              {project.title}
-                            </h3>
-                            <span className="text-gray-400 text-sm">{project.year}</span>
-                          </div>
-                          <p className="text-sm text-gray-300 leading-relaxed">{project.description}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
+                        <p style={{ fontSize: "12px", color: "var(--text-2)", lineHeight: "1.6" }}>{project.description}</p>
+                      </div>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -330,8 +329,8 @@ export default function PersonalWebsite() {
             {" "}
             {/* Changed from 800 */}
             <section className="space-y-4">
-              <h2 className="text-xl">Looking ahead, I'd like to...</h2>
-              <div className="text-gray-300 ml-4">
+              <h2 className="text-xl section-label">Looking ahead, I'd like to...</h2>
+              <div className="ml-4" style={{ color: "var(--text-2)" }}>
                 <ul className="space-y-2 ml-4 list-disc">
                   <li>
                     learn about best practices in software engineering and build scalable systems that impact millions
@@ -354,43 +353,44 @@ export default function PersonalWebsite() {
             {" "}
             {/* Changed from 1000 */}
             <section className="space-y-4">
-              <h2 className="text-xl">What else do you want to know about me?</h2>
+              <h2 className="text-xl section-label">What else do you want to know about me?</h2>
 
-              <Card className="bg-gray-900 border-gray-700">
+              <Card className="border" style={{ cornerShape: "superellipse", borderRadius: "24px", background: "var(--card-bg)", borderColor: "var(--border-2)" }}>
                 <CardContent className="p-4">
                   {messages.length === 0 && (
                     <div className="mb-4">
-                      <div className="text-gray-500 text-sm">
+                      <div className="text-sm" style={{ color: "var(--text-4)" }}>
                         Ask me detailed questions about Richard's specific roles and experiences:
                       </div>
-                      
+
                     </div>
                   )}
 
                   <div className="space-y-4 mb-4 max-h-96 overflow-y-auto">
                     {messages.map((message) => (
                       <div key={message.id} className="space-y-2">
-                        <div className="text-sm font-semibold">{message.role === "user" ? "You:" : "Richard:"}</div>
-                        <div className="text-gray-300">
+                        <div className="text-sm font-semibold" style={{ color: "var(--text)" }}>{message.role === "user" ? "You:" : "Richard:"}</div>
+                        <div style={{ color: "var(--text-2)" }}>
                           {message.role === "assistant" ? (
                             <ReactMarkdown
-                              className="prose prose-invert prose-sm max-w-none"
+                              className="prose prose-sm max-w-none"
                               components={{
                                 p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
                                 strong: ({ children }) => (
-                                  <strong className="font-bold text-green-300">{children}</strong>
+                                  <strong className="font-bold" style={{ color: "var(--text)" }}>{children}</strong>
                                 ),
-                                em: ({ children }) => <em className="italic text-gray-200">{children}</em>,
+                                em: ({ children }) => <em className="italic" style={{ color: "var(--text-2)" }}>{children}</em>,
                                 ul: ({ children }) => <ul className="list-disc list-inside mb-2">{children}</ul>,
                                 ol: ({ children }) => <ol className="list-decimal list-inside mb-2">{children}</ol>,
                                 li: ({ children }) => <li className="mb-1">{children}</li>,
                                 code: ({ children }) => (
-                                  <code className="bg-gray-800 px-1 py-0.5 rounded text-green-400">{children}</code>
+                                  <code className="px-1 py-0.5 rounded" style={{ background: "var(--surface)", color: "var(--text-2)" }}>{children}</code>
                                 ),
                                 a: ({ children, href }) => (
                                   <a
                                     href={href}
-                                    className="text-green-400 underline hover:text-green-300"
+                                    className="underline"
+                                    style={{ color: "var(--text)" }}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                   >
@@ -407,7 +407,7 @@ export default function PersonalWebsite() {
                         </div>
                       </div>
                     ))}
-                    {isLoading && <div className="text-gray-500 text-sm">Richard is thinking...</div>}
+                    {isLoading && <div className="text-sm" style={{ color: "var(--text-4)" }}>Richard is thinking...</div>}
                   </div>
 
                   <form onSubmit={handleSubmit} className="flex space-x-2">
@@ -415,10 +415,11 @@ export default function PersonalWebsite() {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       placeholder="Ask anything about me!"
-                      className="flex-1 bg-gray-800 border-gray-600 text-green-400 placeholder-gray-500"
+                      className="flex-1"
+                      style={{ background: "var(--surface)", borderColor: "var(--border-2)", color: "var(--text)" }}
                       disabled={isLoading}
                     />
-                    <Button type="submit" size="icon" className="bg-green-600 hover:bg-green-700" disabled={isLoading}>
+                    <Button type="submit" size="icon" style={{ background: "var(--text)", color: "var(--bg)" }} disabled={isLoading}>
                       <Send className="w-4 h-4" />
                     </Button>
                   </form>

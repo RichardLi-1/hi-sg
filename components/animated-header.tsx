@@ -1,17 +1,21 @@
 "use client"
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink, Home, Mail, Github, Linkedin, Menu, X } from "lucide-react"
+import { ArrowLeft, ExternalLink, Home, Menu, X, Sun, Moon } from "lucide-react"
 import { useWindowsXP } from "@/contexts/windows-xp-context"
+import { useTheme } from "next-themes"
+
+interface NavItem {
+  href: string
+  label: string
+  external?: boolean
+  active?: boolean
+}
 
 interface AnimatedHeaderProps {
   backHref?: string
   backText?: string
-  rightLinks?: Array<{
-    href: string
-    text: string
-    external?: boolean
-  }>
+  rightLinks?: Array<{ href: string; text: string; external?: boolean }>
   isHomepage?: boolean
   currentPage?: string
 }
@@ -26,436 +30,296 @@ export function AnimatedHeader({
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const { isXPMode, toggleXPMode } = useWindowsXP()
+  const { theme, setTheme } = useTheme()
+
+  useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY > 50
-      setIsScrolled(scrolled)
-    }
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768)
-      if (window.innerWidth >= 768) {
-        setIsMobileMenuOpen(false)
-      }
+      if (window.innerWidth >= 768) setIsMobileMenuOpen(false)
     }
-
     handleResize()
     window.addEventListener("scroll", handleScroll)
     window.addEventListener("resize", handleResize)
-
     return () => {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("resize", handleResize)
     }
   }, [])
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false)
+const getSectionName = () => {
+    if (isHomepage) return ""
+    if (currentPage.startsWith("/projects/")) return "Project"
+    if (currentPage === "/projects") return "Work"
+    if (currentPage.startsWith("/contact")) return "Contact"
+    if (currentPage.startsWith("/transit/photography")) return "Photography"
+    if (currentPage.startsWith("/transit")) return "Transit"
+    return backText || ""
   }
 
-  // Get contextual navigation based on current page
-  const getContextualNav = () => {
+  const getNavItems = (): NavItem[] => {
     if (isHomepage) {
-      return isScrolled ? (
-        <>
-          <Link
-            href="/projects"
-            className="text-gray-400 hover:text-green-300 transition-colors text-sm"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? "Work" : "Work"}
-          </Link>
-          <a
-            href="https://www.linkedin.com/in/richardli0/"
-            className="text-gray-400 hover:text-green-300 transition-colors"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? <Linkedin className="w-4 h-4" /> : <Linkedin className="w-3 h-3" />}
-          </a>
-          <a
-            href="https://github.com/RichardLi-1"
-            className="text-gray-400 hover:text-green-300 transition-colors"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? <Github className="w-4 h-4" /> : <Github className="w-3 h-3" />}
-          </a>
-          <button
-            onClick={toggleXPMode}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
-              isXPMode ? "bg-green-600" : "bg-gray-600"
-            }`}
-          >
-            <span className="sr-only">Toggle Windows XP mode</span>
-            <span
-              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                isXPMode ? "translate-x-6" : "translate-x-1"
-              }`}
-            />
-          </button>
-        </>
-      ) : (
-        <>
-          <Link href="/projects" className="hover:text-green-300 transition-colors" onClick={closeMobileMenu}>
-            WORK
-          </Link>
-          <a
-            href="https://www.linkedin.com/in/richardli0/"
-            className="hover:text-green-300 transition-colors flex items-center gap-1"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? (
-              <Linkedin className="w-5 h-5" />
-            ) : (
-              <>
-                LINKEDIN <ExternalLink className="w-3 h-3" />
-              </>
-            )}
-          </a>
-          <a
-            href="https://github.com/RichardLi-1"
-            className="hover:text-green-300 transition-colors flex items-center gap-1"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? (
-              <Github className="w-5 h-5" />
-            ) : (
-              <>
-                GITHUB <ExternalLink className="w-3 h-3" />
-              </>
-            )}
-          </a>
-          <div className="flex items-center space-x-2">
-            <span className={`text-sm transition-colors ${isXPMode ? "text-green-300" : "text-gray-400"}`}>
-              {"personalize"}
-            </span>
-            <button
-              onClick={toggleXPMode}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
-                isXPMode ? "bg-green-600" : "bg-gray-600"
-              }`}
-            >
-              <span className="sr-only">Toggle Windows XP mode</span>
-              <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  isXPMode ? "translate-x-6" : "translate-x-1"
-                }`}
-              />
-            </button>
-          </div>
-        </>
-      )
+      return [
+        { href: "/projects", label: "Work" },
+        { href: "https://www.linkedin.com/in/richardli0/", label: "LinkedIn", external: true },
+        { href: "https://github.com/RichardLi-1", label: "GitHub", external: true },
+      ]
     }
-
-    // For project pages
-    if (currentPage.includes("/projects")) {
-      return isScrolled ? (
-        <>
-          <Link href="/" className="text-gray-400 hover:text-green-300 transition-colors" onClick={closeMobileMenu}>
-            <Home className="w-3 h-3" />
-          </Link>
-          {currentPage.includes("/projects/") && (
-            <Link
-              href="/projects"
-              className="text-gray-400 hover:text-green-300 transition-colors text-sm"
-              onClick={closeMobileMenu}
-            >
-              Work
-            </Link>
-          )}
-          <a
-            href="https://www.linkedin.com/in/richardli0/"
-            className="text-gray-400 hover:text-green-300 transition-colors"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? <Linkedin className="w-4 h-4" /> : <Linkedin className="w-3 h-3" />}
-          </a>
-          <a
-            href="https://github.com/RichardLi-1"
-            className="text-gray-400 hover:text-green-300 transition-colors"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? <Github className="w-4 h-4" /> : <Github className="w-3 h-3" />}
-          </a>
-          <button
-            onClick={toggleXPMode}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
-              isXPMode ? "bg-green-600" : "bg-gray-600"
-            }`}
-          >
-            <span className="sr-only">Toggle Windows XP mode</span>
-            <span
-              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                isXPMode ? "translate-x-6" : "translate-x-1"
-              }`}
-            />
-          </button>
-        </>
-      ) : (
-        rightLinks.map((link, index) => (
-          <a
-            key={index}
-            href={link.href}
-            target={link.external ? "_blank" : undefined}
-            className="flex items-center text-gray-400 transition-all hover:text-green-300"
-            rel={link.external ? "noreferrer" : undefined}
-            onClick={closeMobileMenu}
-          >
-            {isMobile && link.text === "LINKEDIN" ? (
-              <Linkedin className="w-5 h-5" />
-            ) : isMobile && link.text === "GITHUB" ? (
-              <Github className="w-5 h-5" />
-            ) : (
-              <>
-                {link.text}
-                {link.external && !isMobile && <ExternalLink className="ml-2 h-4 w-4" />}
-              </>
-            )}
-          </a>
-        ))
-      )
+    if (currentPage.startsWith("/projects")) {
+      return [
+        { href: "/", label: "Home" },
+        ...(currentPage !== "/projects" ? [{ href: "/projects", label: "Work" }] : []),
+        ...rightLinks.map(l => ({ href: l.href, label: l.text, external: l.external })),
+      ]
     }
-
-    /* For contact page
-    if (currentPage.includes("/contact")) {
-      return isScrolled ? (
-        <>
-          <Link href="/" className="text-gray-400 hover:text-green-300 transition-colors" onClick={closeMobileMenu}>
-            <Home className="w-3 h-3" />
-          </Link>
-          <Link
-            href="/projects"
-            className="text-gray-400 hover:text-green-300 transition-colors text-sm"
-            onClick={closeMobileMenu}
-          >
-            Work
-          </Link>
-          <a
-            href="https://www.linkedin.com/in/richardli0/"
-            className="text-gray-400 hover:text-green-300 transition-colors"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? <Linkedin className="w-4 h-4" /> : <Linkedin className="w-3 h-3" />}
-          </a>
-          <a
-            href="https://github.com/RichardLi-1"
-            className="text-gray-400 hover:text-green-300 transition-colors"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? <Github className="w-4 h-4" /> : <Github className="w-3 h-3" />}
-          </a>
-          <button
-            onClick={toggleXPMode}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
-              isXPMode ? "bg-green-600" : "bg-gray-600"
-            }`}
-          >
-            <span className="sr-only">Toggle Windows XP mode</span>
-            <span
-              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                isXPMode ? "translate-x-6" : "translate-x-1"
-              }`}
-            />
-          </button>
-        </>
-      ) : (
-        <>
-          <Link href="/" className="hover:text-green-300 transition-colors" onClick={closeMobileMenu}>
-            HOME
-          </Link>
-          <Link href="/projects" className="hover:text-green-300 transition-colors" onClick={closeMobileMenu}>
-            WORK
-          </Link>
-          <a
-            href="https://www.linkedin.com/in/richardli0/"
-            className="hover:text-green-300 transition-colors flex items-center gap-1"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? (
-              <Linkedin className="w-5 h-5" />
-            ) : (
-              <>
-                LINKEDIN <ExternalLink className="w-3 h-3" />
-              </>
-            )}
-          </a>
-          <a
-            href="https://github.com/RichardLi-1"
-            className="hover:text-green-300 transition-colors flex items-center gap-1"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMobileMenu}
-          >
-            {isMobile ? (
-              <Github className="w-5 h-5" />
-            ) : (
-              <>
-                GITHUB <ExternalLink className="w-3 h-3" />
-              </>
-            )}
-          </a>
-          <div className="flex items-center space-x-2">
-            <span className={`text-sm transition-colors ${isXPMode ? "text-green-300" : "text-gray-400"}`}>
-              {"click here!"}
-            </span>
-            <button
-              onClick={toggleXPMode}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
-                isXPMode ? "bg-green-600" : "bg-gray-600"
-              }`}
-            >
-              <span className="sr-only">Toggle Windows XP mode</span>
-              <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  isXPMode ? "translate-x-6" : "translate-x-1"
-                }`}
-              />
-            </button>
-          </div>
-        </>
-      )
-    }*/
-
-    // Default navigation
-    return isScrolled ? (
-      <>
-        <Link href="/" className="text-gray-400 hover:text-green-300 transition-colors" onClick={closeMobileMenu}>
-          <Home className="w-3 h-3" />
-        </Link>
-        <a
-          href="https://www.linkedin.com/in/richardli0/"
-          className="text-gray-400 hover:text-green-300 transition-colors"
-          target="_blank"
-          rel="noreferrer"
-          onClick={closeMobileMenu}
-        >
-          {isMobile ? <Linkedin className="w-4 h-4" /> : <Linkedin className="w-3 h-3" />}
-        </a>
-        <a
-          href="https://github.com/RichardLi-1"
-          className="text-gray-400 hover:text-green-300 transition-colors"
-          target="_blank"
-          rel="noreferrer"
-          onClick={closeMobileMenu}
-        >
-          {isMobile ? <Github className="w-4 h-4" /> : <Github className="w-3 h-3" />}
-        </a>
-        <button
-          onClick={toggleXPMode}
-          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
-            isXPMode ? "bg-green-600" : "bg-gray-600"
-          }`}
-        >
-          <span className="sr-only">Toggle Windows XP mode</span>
-          <span
-            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-              isXPMode ? "translate-x-6" : "translate-x-1"
-            }`}
-          />
-        </button>
-      </>
-    ) : (
-      rightLinks.map((link, index) => (
-        <a
-          key={index}
-          href={link.href}
-          target={link.external ? "_blank" : undefined}
-          className="flex items-center text-gray-400 transition-all hover:text-green-300"
-          rel={link.external ? "noreferrer" : undefined}
-          onClick={closeMobileMenu}
-        >
-          {isMobile && link.text === "CONTACT" ? (
-            <Mail className="w-5 h-5" />
-          ) : isMobile && link.text === "LINKEDIN" ? (
-            <Linkedin className="w-5 h-5" />
-          ) : isMobile && link.text === "GITHUB" ? (
-            <Github className="w-5 h-5" />
-          ) : (
-            <>
-              {link.text}
-              {link.external && !isMobile && <ExternalLink className="ml-2 h-4 w-4" />}
-            </>
-          )}
-        </a>
-      ))
-    )
+    return [
+      { href: "/", label: "Home" },
+      ...rightLinks.map(l => ({ href: l.href, label: l.text, external: l.external })),
+    ]
   }
+
+  const navItems = getNavItems()
+  const sectionName = getSectionName()
+
+  // Compact pill used for scrolled state
+  const PillNav = () => (
+    <div className="header-pill max-w-sm mx-auto rounded-full backdrop-blur-xl border shadow-2xl">
+      <div className="flex items-center justify-between gap-2 p-3">
+        {/* Left: logo / back */}
+        {isHomepage ? (
+          <Link href="/" style={{ fontFamily: "'SFCamera', 'Toronto Subway', sans-serif", fontSize: "14px", color: "var(--text)", textDecoration: "none" }}>
+            RL
+          </Link>
+        ) : backHref ? (
+          <Link href={backHref} style={{ color: "var(--text-3)", display: "flex", alignItems: "center" }}>
+            <ArrowLeft className="h-4 w-4" />
+          </Link>
+        ) : null}
+
+        {/* Right: compact nav + XP toggle + theme */}
+        <div className="flex items-center gap-2">
+          {navItems.map((item, i) => (
+            <a
+              key={i}
+              href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
+              className="nav-item"
+              style={{ fontSize: "11px", padding: "4px 8px" }}
+            >
+              {item.label === "Home" ? <Home className="w-3 h-3" /> : item.label}
+            </a>
+          ))}
+          {/* XP toggle switch */}
+          <button
+            onClick={toggleXPMode}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${
+              isXPMode ? "bg-green-600" : "bg-gray-600"
+            }`}
+          >
+            <span className="sr-only">Toggle Windows XP mode</span>
+            <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isXPMode ? "translate-x-6" : "translate-x-1"}`} />
+          </button>
+          {/* Theme toggle */}
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="nav-item"
+              style={{ padding: "4px 6px" }}
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun className="w-3 h-3" /> : <Moon className="w-3 h-3" />}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <>
-      <header
-        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${isScrolled ? "p-4" : "p-0"}`}
-      >
+      {/* Mobile scrolled: fixed pill at viewport bottom (separate element — position can't animate) */}
+      {isScrolled && isMobile && (
+        <div className="fixed bottom-0 left-0 right-0 p-4 z-50">
+          <PillNav />
+        </div>
+      )}
+
+      {/* Desktop + mobile-unscrolled: single element so the container shape can animate */}
+      {(!isScrolled || !isMobile) && (
+        <header
+          className="sticky top-0 z-50"
+          style={{
+            padding: isScrolled && !isMobile ? "12px 16px" : "0",
+            background: isScrolled && !isMobile ? "transparent" : "var(--bg)",
+            borderBottom: isScrolled && !isMobile ? "none" : "1px solid var(--border-2)",
+            transition: "padding 0.7s ease-out, background 0.7s ease-out, border-color 0.7s ease-out",
+          }}
+        >
+          {/* Container: animates between full-width bar and centered pill using numeric values */}
+          <div
+            style={{
+              maxWidth: isScrolled && !isMobile ? "384px" : "1200px",
+              margin: "0 auto",
+              borderRadius: isScrolled && !isMobile ? "9999px" : "0px",
+              backdropFilter: isScrolled && !isMobile ? "blur(20px)" : "blur(0px)",
+              WebkitBackdropFilter: isScrolled && !isMobile ? "blur(20px)" : "blur(0px)",
+              background: isScrolled && !isMobile ? "var(--glass-bg)" : "transparent",
+              border: isScrolled && !isMobile ? "1px solid var(--border-2)" : "1px solid transparent",
+              boxShadow: isScrolled && !isMobile ? "0 8px 32px rgba(0,0,0,0.12)" : "none",
+              transition: "max-width 0.7s ease-out, border-radius 0.7s ease-out, backdrop-filter 0.7s ease-out, background 0.5s ease-out, box-shadow 0.5s ease-out",
+            }}
+          >
+            <div
+              className="flex items-center justify-between"
+              style={{
+                padding: isScrolled && !isMobile ? "10px 16px" : "0 32px",
+                height: isScrolled && !isMobile ? "auto" : "64px",
+                gap: isScrolled && !isMobile ? "8px" : "0",
+                transition: "padding 0.7s ease-out, height 0.7s ease-out",
+              }}
+            >
+              {/* ── Left ── */}
+              {isScrolled && !isMobile ? (
+                /* Compact: RL or back arrow */
+                isHomepage ? (
+                  <Link href="/" style={{ fontFamily: "'SFCamera', 'Toronto Subway', sans-serif", fontSize: "14px", color: "var(--text)", textDecoration: "none" }}>
+                    RL
+                  </Link>
+                ) : backHref ? (
+                  <Link href={backHref} style={{ color: "var(--text-3)", display: "flex", alignItems: "center" }}>
+                    <ArrowLeft className="h-4 w-4" />
+                  </Link>
+                ) : null
+              ) : (
+                /* Full: avatar circle + wordmark + section */
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <div style={{ width: 32, height: 32, borderRadius: "50%", background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span style={{ fontFamily: "'SFCamera', 'Toronto Subway', sans-serif", fontSize: "12px", color: "var(--text)" }}>RL</span>
+                  </div>
+                  <Link href="/" className="nav-logo">Richard Li</Link>
+                  {sectionName && (
+                    <span style={{ fontFamily: "'Toronto Subway', sans-serif", fontSize: "16px", letterSpacing: "0.08em", color: "var(--text-3)" }}>
+                      {sectionName}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {/* ── Right ── */}
+              {isScrolled && !isMobile ? (
+                /* Compact pill nav */
+                <div className="flex items-center gap-2">
+                  {navItems.map((item, i) => (
+                    <a key={i} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined}
+                      className="nav-item" style={{ fontSize: "11px", padding: "4px 8px" }}>
+                      {item.label === "Home" ? <Home className="w-3 h-3" /> : item.label}
+                    </a>
+                  ))}
+                  <button onClick={toggleXPMode}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${isXPMode ? "bg-green-600" : "bg-gray-600"}`}>
+                    <span className="sr-only">Toggle Windows XP mode</span>
+                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isXPMode ? "translate-x-6" : "translate-x-1"}`} />
+                  </button>
+                  {mounted && (
+                    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                      className="nav-item" style={{ padding: "4px 6px" }} aria-label="Toggle theme">
+                      {theme === "dark" ? <Sun className="w-3 h-3" /> : <Moon className="w-3 h-3" />}
+                    </button>
+                  )}
+                </div>
+              ) : isMobile ? (
+                /* Mobile: theme + hamburger */
+                <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                  {mounted && (
+                    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                      className="nav-item" aria-label="Toggle theme">
+                      {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                    </button>
+                  )}
+                  <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="nav-item">
+                    {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                  </button>
+                </div>
+              ) : (
+                /* Desktop full editorial nav */
+                <ul style={{ display: "flex", alignItems: "center", gap: "4px", listStyle: "none", margin: 0, padding: 0 }}>
+                  {navItems.map((item, i) => (
+                    <li key={i}>
+                      <a href={item.href} target={item.external ? "_blank" : undefined}
+                        rel={item.external ? "noopener noreferrer" : undefined}
+                        className={`nav-item${item.active ? " active" : ""}`}>
+                        {item.label}
+                        {item.external && <ExternalLink className="w-3 h-3" style={{ opacity: 0.5 }} />}
+                      </a>
+                    </li>
+                  ))}
+                  {/* XP toggle + label */}
+                  <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "0 6px" }}>
+                    <span className="nav-item" style={{ background: "none", cursor: "default", color: isXPMode ? "var(--text)" : "var(--text-3)" }}>
+                      personalise
+                    </span>
+                    <button onClick={toggleXPMode}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${isXPMode ? "bg-green-600" : "bg-gray-600"}`}>
+                      <span className="sr-only">Toggle Windows XP mode</span>
+                      <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isXPMode ? "translate-x-6" : "translate-x-1"}`} />
+                    </button>
+                  </li>
+                  {/* Theme toggle */}
+                  {mounted && (
+                    <li>
+                      <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                        style={{ background: "none", border: "none", cursor: "pointer", padding: "0 6px", color: "var(--text-3)", transition: "color 0.15s", display: "flex", alignItems: "center" }}
+                        onMouseEnter={e => (e.currentTarget.style.color = "var(--text)")}
+                        onMouseLeave={e => (e.currentTarget.style.color = "var(--text-3)")}
+                        aria-label="Toggle theme">
+                        {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                      </button>
+                    </li>
+                  )}
+                </ul>
+              )}
+            </div>
+          </div>
+        </header>
+      )}
+
+      {/* Mobile menu overlay */}
+      {isMobile && isMobileMenuOpen && !isScrolled && (
         <div
-          className={`mx-auto transition-all duration-700 ease-out ${
-            isScrolled
-              ? "max-w-sm rounded-full backdrop-blur-xl bg-black/40 border border-gray-600/30 shadow-2xl transform scale-95"
-              : "max-w-full rounded-none backdrop-blur-none bg-black border-b border-gray-800 shadow-none transform scale-100"
-          }`}
+          className="fixed inset-0 z-40 backdrop-blur-sm"
+          style={{ background: "rgba(0,0,0,0.5)" }}
+          onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
-            className={`flex items-center justify-between transition-all duration-700 ${isScrolled ? "p-3" : "p-6"}`}
+            className="absolute left-0 right-0 shadow-2xl"
+            style={{ top: "65px", background: "var(--bg)", borderBottom: "1px solid var(--border-2)" }}
+            onClick={e => e.stopPropagation()}
           >
-            {/* Left side */}
-            {!isHomepage && backHref && (
-              <Link href={backHref} className="flex items-center text-gray-400 transition-all hover:text-green-300">
-                <ArrowLeft className={`h-4 w-4 transition-all ${isScrolled ? "mr-0" : "mr-2"}`} />
-                {!isScrolled && backText}
-              </Link>
-            )}
-
-            {isHomepage && (
-              <div className="flex items-center space-x-4">
-                {!isScrolled && (
-                  <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center">
-                    <span className="text-green-400 font-bold">RL</span>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Right side navigation */}
-            {isMobile && !isScrolled ? (
+            <nav style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", padding: "20px 0" }}>
+              {navItems.map((item, i) => (
+                <a
+                  key={i}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  className="nav-item"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
               <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-gray-400 hover:text-green-300 transition-colors p-2"
+                onClick={() => { toggleXPMode(); setIsMobileMenuOpen(false) }}
+                className={`nav-item${isXPMode ? " active" : ""}`}
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isXPMode ? "XP On" : "XP Off"}
               </button>
-            ) : (
-              <nav
-                className={`flex items-center transition-all duration-700 ${isScrolled ? "space-x-2" : "space-x-8"}`}
-              >
-                {getContextualNav()}
-              </nav>
-            )}
-          </div>
-        </div>
-      </header>
-
-      {isMobile && isMobileMenuOpen && !isScrolled && (
-        <div className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm" onClick={closeMobileMenu}>
-          <div className="absolute top-20 left-0 right-0 bg-black border-b border-gray-800 shadow-2xl">
-            <nav className="flex flex-col items-center space-y-6 py-8">{getContextualNav()}</nav>
+            </nav>
           </div>
         </div>
       )}

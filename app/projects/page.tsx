@@ -29,7 +29,7 @@ export default function ProjectsPage() {
 
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-black text-green-400">
+      <div className="min-h-screen page-bg">
         <AnimatedHeader
           backHref="/"
           backText="Back"
@@ -44,8 +44,8 @@ export default function ProjectsPage() {
         <main className="max-w-screen-2xl mx-auto p-6" style={{ paddingTop: "120px" }}>
           <StaggeredContent delay={0}>
             <div className="mb-12">
-              <h1 className="text-4xl font-bold mb-4">Work</h1>
-              <p className="text-gray-300 text-lg -mb-8">
+              <h1 style={{ fontSize: "clamp(28px, 4vw, 48px)", marginBottom: "12px" }}>Work</h1>
+              <p style={{ fontSize: "14px", color: "var(--text-3)", letterSpacing: "0.02em", marginBottom: "-32px" }}>
                 A collection of work and projects, from mobile games to non-profit initiatives.
               </p>
             </div>
@@ -66,30 +66,27 @@ export default function ProjectsPage() {
                   }}
                 >
                   <Link href={`/projects/${project.id}`}>
-                    <Card className="transition-all duration-300 cursor-pointer group border-background bg-background mb-6 hover:scale-[0.98]">
-                      <CardContent className="p-0">
-                        <div className="aspect-video w-full bg-gray-800 overflow-hidden squircle-lg transition-shadow duration-300 group-hover:shadow-[0_0px_200px_-20px_var(--glow-color)]">
-                          <ProjectImageCycler
-                            images={[project.image, (project as any).image2, (project as any).image3]}
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-300"
-                          />
+                    <div
+                      className="photo-card mb-6 cursor-pointer group"
+                      style={{ "--glow-color": (project as any).colors || "#22c55e44" } as React.CSSProperties}
+                    >
+                      <div className="aspect-video w-full overflow-hidden squircle-lg transition-shadow duration-300 group-hover:shadow-[0_0px_120px_-20px_var(--glow-color)]" style={{ background: "var(--surface)" }}>
+                        <ProjectImageCycler
+                          images={[project.image, (project as any).image2, (project as any).image3]}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="px-5 py-4">
+                        <div className="flex items-center justify-between mb-1">
+                          <h3 style={{ fontSize: "15px", letterSpacing: "0.02em", fontWeight: 500, color: "var(--text)" }}>
+                            {project.title}
+                          </h3>
+                          <span style={{ fontSize: "12px", color: "var(--text-3)", letterSpacing: "0.04em" }}>{project.year}</span>
                         </div>
-                        <div className="p-6 mx-0 px-0 py-3.5">
-                          <div className="flex -mt-2">
-                            <div className="flex-grow">
-                              <div className="flex items-center justify-between mb-[3px]">
-                                <h3 className="text-l font-bold text-white -mb-6 -mt-6 transition-all duration-300">
-                                  {project.title}
-                                </h3>
-                                <span className="text-gray-400 text-sm">{project.year}</span>
-                              </div>
-                              <p className="text-gray-300 text-sm leading-relaxed -mt-1 mx-[]">{project.description}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                        <p style={{ fontSize: "13px", color: "var(--text-2)", lineHeight: "1.6" }}>{project.description}</p>
+                      </div>
+                    </div>
                   </Link>
                 </div>
               ))}
@@ -126,7 +123,7 @@ export default function ProjectsPage() {
 
           <StaggeredContent delay={700}>
             <div className="mt-8 text-center">
-              <p className="text-gray-300">I'm always working on new projects. Check back soon for updates!</p>
+              <p style={{ fontSize: "13px", color: "var(--text-3)", letterSpacing: "0.02em" }}>I'm always working on new projects. Check back soon for updates!</p>
             </div>
           </StaggeredContent>
         </main>

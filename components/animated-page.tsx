@@ -15,8 +15,8 @@ export function AnimatedPage({ children }: AnimatedPageProps) {
 
   return (
     <div
-      className={`transition-all duration-1000 ease-out ${
-        isLoaded ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-8"
+      className={`transition-opacity duration-700 ease-out ${
+        isLoaded ? "opacity-100" : "opacity-0"
       }`}
     >
       {children}

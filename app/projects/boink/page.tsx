@@ -7,7 +7,7 @@ import { AnimatedHeader } from "@/components/animated-header"
 export default function BoinkProjectPage() {
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-black text-green-400">
+      <div className="min-h-screen page-bg">
         <AnimatedHeader
           backHref="/projects"
           backText="Back"
