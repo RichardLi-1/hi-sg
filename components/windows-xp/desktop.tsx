@@ -146,7 +146,7 @@ function AboutMeContent() {
     <div className="p-4 h-full overflow-auto bg-white">
       <h2 className="text-xl font-bold mb-4 text-black">About Richard Li</h2>
       <div className="space-y-3 text-black text-sm">
-        <p>Hey, I'm Richard! I'm 18, based in Toronto.</p>
+        <p>Hey, I'm Richard! I'm 19, based in Toronto.</p>
         <p>I'm interested in public transportation, AI, design, and front-end development.</p>
 
         <h3 className="font-bold mt-4">Currently:</h3>

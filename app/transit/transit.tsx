@@ -147,7 +147,7 @@ export default function PersonalWebsite() {
               <h1 className="text-4xl font-bold">Hey, I'm Richard!</h1>
               <div className="space-y-2 text-gray-300">
                 <p>
-                  I'm 18, based in{" "}
+                  I'm 19, based in{" "}
                   <span className="underline">
                     <a
                       href="https://en.wikipedia.org/wiki/Toronto"

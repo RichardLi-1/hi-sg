@@ -169,20 +169,6 @@ export default function PersonalWebsite() {
             <section className="space-y-4">
               <h1 style={{ fontSize: "clamp(28px, 4vw, 48px)" }}>Hey, I'm Richard!</h1>
               <div className="space-y-2" style={{ color: "var(--text-2)" }}>
-                <p>
-                  I'm 18, based in{" "}
-                  <span className="underline">
-                    <a
-                      href="https://en.wikipedia.org/wiki/Toronto"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline hover:text-stone-100 transition-colors inline-block transform transition-transform duration-200 hover:scale-110"
-                    >
-                      toronto
-                    </a>
-                  </span>
-                  .
-                </p>
                 <p>I'm interested in public transportation, AI, PM, design, and development.</p>
               </div>
             </section>

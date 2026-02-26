@@ -1,6 +1,6 @@
 "use client"
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { WindowsXPProvider } from "@/contexts/windows-xp-context"
 import { WindowsXPDesktop } from "@/components/windows-xp/desktop"
 import { useWindowsXP } from "@/contexts/windows-xp-context"
@@ -11,7 +11,14 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
   const { isXPMode } = useWindowsXP()
   const [showLoading, setShowLoading] = useState(true)
 
+  useEffect(() => {
+    if (sessionStorage.getItem('hasLoaded')) {
+      setShowLoading(false)
+    }
+  }, [])
+
   const handleLoadingComplete = () => {
+    sessionStorage.setItem('hasLoaded', '1')
     setShowLoading(false)
   }
 
