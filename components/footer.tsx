@@ -14,7 +14,7 @@ export function Footer() {
         </div>
 
         {/* Bottom row: built with */}
-        <span style={{ fontFamily: "'SFCamera', sans-serif", color: "var(--text-3)", fontSize: "12px", opacity: 0.6 }}>
+        <span style={{ fontFamily: "'SFCamera', sans-serif", color: "var(--text-3)", fontSize: "14px", opacity: 0.6 }}>
           Written in TypeScript using Next.js. Set in SFCamera and Toronto Subway. Built with ❤️.
         </span>
 

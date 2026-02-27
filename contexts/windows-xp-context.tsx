@@ -16,6 +16,8 @@ interface WindowXPWindow {
 interface WindowsXPContextType {
   isXPMode: boolean
   toggleXPMode: () => void
+  isPersonalized: boolean
+  togglePersonalizedMode: () => void
   windows: WindowXPWindow[]
   openWindow: (window: Omit<WindowXPWindow, "id" | "zIndex">) => void
   closeWindow: (id: string) => void
@@ -32,6 +34,10 @@ const WindowsXPContext = createContext<WindowsXPContextType | undefined>(undefin
 
 export function WindowsXPProvider({ children }: { children: React.ReactNode }) {
   const [isXPMode, setIsXPMode] = useState(false)
+  const [isPersonalized, setIsPersonalized] = useState(() => {
+    if (typeof window === "undefined") return false
+    return localStorage.getItem("isPersonalized") === "true"
+  })
   const [windows, setWindows] = useState<WindowXPWindow[]>([])
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false)
   const [nextZIndex, setNextZIndex] = useState(1000)
@@ -53,7 +59,6 @@ export function WindowsXPProvider({ children }: { children: React.ReactNode }) {
           },
         ).catch(console.error)
 
-        // Play startup sound when enabling XP mode
         const audio = new Audio("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ytmp3free.cc_microsoft-windows-xp-startup-sound-youtubemp3free.org-jm7S6oGjDVJxF19pr1JBJX95evAsxg.mp3")
         audio.play().catch(console.error)
       } else {
@@ -64,6 +69,14 @@ export function WindowsXPProvider({ children }: { children: React.ReactNode }) {
       return !prev
     })
   }, [pageLoadTime])
+
+  const togglePersonalizedMode = useCallback(() => {
+    setIsPersonalized((prev) => {
+      const next = !prev
+      localStorage.setItem("isPersonalized", String(next))
+      return next
+    })
+  }, [])
 
   const openWindow = useCallback(
     (windowData: Omit<WindowXPWindow, "id" | "zIndex">) => {
@@ -116,6 +129,8 @@ export function WindowsXPProvider({ children }: { children: React.ReactNode }) {
       value={{
         isXPMode,
         toggleXPMode,
+        isPersonalized,
+        togglePersonalizedMode,
         windows,
         openWindow,
         closeWindow,

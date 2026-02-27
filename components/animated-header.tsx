@@ -31,7 +31,7 @@ export function AnimatedHeader({
   const [isMobile, setIsMobile] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
-  const { isXPMode, toggleXPMode } = useWindowsXP()
+  const { isPersonalized, togglePersonalizedMode } = useWindowsXP()
   const { theme, setTheme } = useTheme()
 
   useEffect(() => { setMounted(true) }, [])
@@ -116,15 +116,15 @@ const getSectionName = () => {
               {item.label === "Home" ? <Home className="w-3 h-3" /> : item.label}
             </a>
           ))}
-          {/* XP toggle switch */}
+          {/* Personalise toggle switch */}
           <button
-            onClick={toggleXPMode}
+            onClick={togglePersonalizedMode}
             className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${
-              isXPMode ? "bg-green-600" : "bg-gray-600"
+              isPersonalized ? "bg-green-600" : "bg-gray-600"
             }`}
           >
-            <span className="sr-only">Toggle Windows XP mode</span>
-            <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isXPMode ? "translate-x-6" : "translate-x-1"}`} />
+            <span className="sr-only">Toggle personalized mode</span>
+            <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isPersonalized ? "translate-x-6" : "translate-x-1"}`} />
           </button>
           {/* Theme toggle */}
           {mounted && (
@@ -222,10 +222,10 @@ const getSectionName = () => {
                       {item.label === "Home" ? <Home className="w-3 h-3" /> : item.label}
                     </a>
                   ))}
-                  <button onClick={toggleXPMode}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${isXPMode ? "bg-green-600" : "bg-gray-600"}`}>
-                    <span className="sr-only">Toggle Windows XP mode</span>
-                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isXPMode ? "translate-x-6" : "translate-x-1"}`} />
+                  <button onClick={togglePersonalizedMode}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${isPersonalized ? "bg-green-600" : "bg-gray-600"}`}>
+                    <span className="sr-only">Toggle personalized mode</span>
+                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isPersonalized ? "translate-x-6" : "translate-x-1"}`} />
                   </button>
                   {mounted && (
                     <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -262,13 +262,13 @@ const getSectionName = () => {
                   ))}
                   {/* XP toggle + label */}
                   <li style={{ display: "flex", alignItems: "center", gap: "8px", padding: "0 6px" }}>
-                    <span className="nav-item" style={{ background: "none", cursor: "default", color: isXPMode ? "var(--text)" : "var(--text-3)" }}>
+                    <span className="nav-item" style={{ background: "none", cursor: "default", color: isPersonalized ? "var(--text)" : "var(--text-3)" }}>
                       personalise
                     </span>
-                    <button onClick={toggleXPMode}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${isXPMode ? "bg-green-600" : "bg-gray-600"}`}>
-                      <span className="sr-only">Toggle Windows XP mode</span>
-                      <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isXPMode ? "translate-x-6" : "translate-x-1"}`} />
+                    <button onClick={togglePersonalizedMode}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${isPersonalized ? "bg-green-600" : "bg-gray-600"}`}>
+                      <span className="sr-only">Toggle personalized mode</span>
+                      <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isPersonalized ? "translate-x-6" : "translate-x-1"}`} />
                     </button>
                   </li>
                   {/* Theme toggle */}
@@ -316,10 +316,10 @@ const getSectionName = () => {
                 </a>
               ))}
               <button
-                onClick={() => { toggleXPMode(); setIsMobileMenuOpen(false) }}
-                className={`nav-item${isXPMode ? " active" : ""}`}
+                onClick={() => { togglePersonalizedMode(); setIsMobileMenuOpen(false) }}
+                className={`nav-item${isPersonalized ? " active" : ""}`}
               >
-                {isXPMode ? "XP On" : "XP Off"}
+                {isPersonalized ? "Personalised" : "Personalise"}
               </button>
             </nav>
           </div>

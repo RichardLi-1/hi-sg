@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer"
 import { useWindowsXP } from "@/contexts/windows-xp-context"
 
 export default function MorePage() {
-  const { toggleXPMode } = useWindowsXP()
+  const { togglePersonalizedMode } = useWindowsXP()
 
   return (
     <AnimatedPage>
@@ -27,7 +27,7 @@ export default function MorePage() {
           <p style={{ color: "var(--text-3)", fontSize: "15px", maxWidth: "360px", lineHeight: 1.6 }}>
             in the meantime,{" "}
             <button
-              onClick={toggleXPMode}
+              onClick={togglePersonalizedMode}
               style={{
                 color: "var(--text)",
                 textDecoration: "underline",
