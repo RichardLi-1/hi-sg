@@ -1,9 +1,10 @@
 "use client"
-import { useState } from "react" // Import useState
+import { useState } from "react"
 import { Footer } from "@/components/footer"
 import { AnimatedPage } from "@/components/animated-page"
 import { StaggeredContent } from "@/components/staggered-content"
 import { AnimatedHeader } from "@/components/animated-header"
+import { RelatedProjects } from "@/components/related-projects"
 
 export default function YRHacksProjectPage() {
   const [showAllTeam, setShowAllTeam] = useState(false) // State to manage visibility
@@ -188,11 +189,10 @@ export default function YRHacksProjectPage() {
               me.
             </p>
           </StaggeredContent>
+          <RelatedProjects currentId="yrhacks" />
         </main>
 
         <StaggeredContent delay={1100}>
-          {" "}
-          {/* Changed from 1400 */}
           <Footer />
         </StaggeredContent>
       </div>

@@ -10,6 +10,7 @@ export function AnimatedPage({ children }: AnimatedPageProps) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     setIsLoaded(true)
   }, [])
 

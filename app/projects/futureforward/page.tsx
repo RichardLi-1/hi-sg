@@ -1,14 +1,12 @@
 "use client"
 import { useEffect } from "react"
-import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { AnimatedPage } from "@/components/animated-page"
 import { StaggeredContent } from "@/components/staggered-content"
 import { AnimatedHeader } from "@/components/animated-header"
 import { Youtube } from "lucide-react"
 import { usePageViewTracker } from "@/hooks/use-page-view-tracker"
-import { mainProjects } from "@/components/mainProjects"
-import { ProjectImageCycler } from "@/components/project-image-cycler"
+import { RelatedProjects } from "@/components/related-projects"
 
 const GLOW: React.CSSProperties = { position: "absolute", inset: -20, background: "rgba(59,54,156,0.35)", filter: "blur(36px)", borderRadius: 28, zIndex: 0 }
 const LABEL_STYLE: React.CSSProperties = { fontFamily: "'Toronto Subway', sans-serif", fontSize: 11, letterSpacing: "0.18em", color: "var(--text-3)", textTransform: "uppercase" }
@@ -254,40 +252,7 @@ export default function FutureForwardProjectPage() {
             </p>
           </StaggeredContent>
 
-          <StaggeredContent delay={0}>
-            <div className="mb-8">
-              <h1 className="text-2xl font-bold mb-2 flex items-center gap-2">
-                Also check out...
-              </h1>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {mainProjects.slice(0, 2).map((project) => (
-                  <Link key={project.id} href={`/projects/${project.id}`}>
-                    <div
-                      className="photo-card h-full flex flex-col cursor-pointer group"
-                      style={{ "--glow-color": project.colors || "#22c55e44" } as React.CSSProperties}
-                    >
-                      <div className="aspect-video w-full overflow-hidden squircle-lg transition-shadow duration-300 group-hover:shadow-[0_0px_120px_-20px_var(--glow-color)]" style={{ background: "var(--surface)" }}>
-                        <ProjectImageCycler
-                          images={[project.image, (project as any).image2, (project as any).image3]}
-                          alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="px-4 py-3 flex flex-col flex-grow">
-                        <div className="flex items-center justify-between mb-1">
-                          <h3 style={{ fontSize: "14px", letterSpacing: "0.02em", fontWeight: 500, color: "var(--text)" }}>
-                            {project.title}
-                          </h3>
-                          <span style={{ fontSize: "11px", color: "var(--text-3)", letterSpacing: "0.04em" }}>{project.year}</span>
-                        </div>
-                        <p style={{ fontSize: "12px", color: "var(--text-2)", lineHeight: "1.6" }}>{project.description}</p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-          </StaggeredContent>
+          <RelatedProjects currentId="futureforward" />
         </main>
 
         <StaggeredContent delay={1100}>

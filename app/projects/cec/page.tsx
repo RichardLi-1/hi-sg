@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import { AnimatedPage } from "@/components/animated-page"
 import { StaggeredContent } from "@/components/staggered-content"
 import { AnimatedHeader } from "@/components/animated-header"
+import { RelatedProjects } from "@/components/related-projects"
 
 export default function SalesPatriotProjectPage() {
   return (
@@ -65,11 +66,10 @@ export default function SalesPatriotProjectPage() {
               </div>
             </div>
           </StaggeredContent>
+          <RelatedProjects currentId="cec" />
         </main>
 
         <StaggeredContent delay={1100}>
-          {" "}
-          {/* Changed from 1400 */}
           <Footer />
         </StaggeredContent>
       </div>
